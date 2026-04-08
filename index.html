@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>特朗普言论 × 美股走势 时间线 2024.11 — 2025.04</title>
+  <style>
+    :root {
+      --bg: #0b0e17;
+      --bg2: #111420;
+      --bg3: #181c2a;
+      --red: #ef4444;
+      --red2: #dc2626;
+      --green: #22c55e;
+      --gold: #f59e0b;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --border: rgba(255,255,255,0.07);
+      --trump: #ef4444;
+      --market-up: #22c55e;
+      --market-dn: #ef4444;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg); color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      background: linear-gradient(135deg, #0b0e17 0%, #1a1230 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 0 40px; text-align: center;
+    }
+    .header-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3);
+      color: #fca5a5; padding: 6px 16px; border-radius: 999px;
+      font-size: 12px; font-weight: 600; letter-spacing: .08em;
+      margin-bottom: 20px;
+    }
+    header h1 { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 10px; }
+    header h1 span { color: var(--gold); }
+    header p { color: var(--muted); font-size: 14px; }
+
+    /* ─── LEGEND ─── */
+    .legend {
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+      padding: 20px; background: var(--bg2); border-bottom: 1px solid var(--border);
+    }
+    .leg-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+    .leg-dot { width: 12px; height: 12px; border-radius: 3px; }
+    .leg-dot.tariff   { background: #ef4444; }
+    .leg-dot.rally    { background: #22c55e; }
+    .leg-dot.election { background: #f59e0b; }
+    .leg-dot.policy   { background: #3b82f6; }
+    .leg-dot.truce    { background: #a855f7; }
+
+    /* ─── CHART AREA ─── */
+    .chart-section { padding: 40px 60px 0; max-width: 1300px; margin: 0 auto; }
+    .chart-label { font-size: 12px; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+    .sp500-chart { position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; overflow: visible; }
+    .chart-tooltip {
+      position: fixed; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 14px; font-size: 12px; pointer-events: none;
+      opacity: 0; transition: opacity .15s; z-index: 200; max-width: 220px; line-height: 1.6;
+    }
+
+    /* ─── TIMELINE ─── */
+    .timeline-section { padding: 0 60px 80px; max-width: 1300px; margin: 0 auto; }
+    .tl-header { text-align: center; padding: 48px 0 32px; }
+    .tl-header h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+    .tl-header p { color: var(--muted); font-size: 14px; }
+
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--border), rgba(239,68,68,0.4), var(--border));
+      transform: translateX(-50%);
+    }
+
+    .tl-item {
+      display: grid; grid-template-columns: 1fr 60px 1fr;
+      gap: 0; margin-bottom: 12px; align-items: start;
+    }
+    .tl-item.left .tl-content { grid-column: 1; text-align: right; padding-right: 32px; }
+    .tl-item.left .tl-empty   { grid-column: 3; }
+    .tl-item.right .tl-content { grid-column: 3; text-align: left; padding-left: 32px; }
+    .tl-item.right .tl-empty   { grid-column: 1; }
+    .tl-node { grid-column: 2; display: flex; align-items: flex-start; justify-content: center; padding-top: 18px; }
+
+    .node-dot {
+      width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--bg);
+      flex-shrink: 0; cursor: pointer; transition: transform .2s;
+      position: relative; z-index: 1;
+    }
+    .node-dot:hover { transform: scale(1.5); }
+    .node-dot.tariff   { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,0.2); }
+    .node-dot.rally    { background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.2); }
+    .node-dot.election { background: #f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,0.2); }
+    .node-dot.policy   { background: #3b82f6; box-shadow: 0 0 0 4px rgba(59,130,246,0.2); }
+    .node-dot.truce    { background: #a855f7; box-shadow: 0 0 0 4px rgba(168,85,247,0.2); }
+
+    .tl-content {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 20px; cursor: pointer;
+      transition: border-color .2s, transform .2s;
+    }
+    .tl-content:hover { transform: translateY(-2px); }
+    .tl-content.tariff   { border-left-color: #ef4444; }
+    .tl-content.rally    { border-left-color: #22c55e; }
+    .tl-content.election { border-left-color: #f59e0b; }
+    .tl-content.policy   { border-left-color: #3b82f6; }
+    .tl-content.truce    { border-left-color: #a855f7; }
+    .tl-item.right .tl-content.tariff   { border-right-color: #ef4444; border-left-color: var(--border); }
+    .tl-item.right .tl-content.rally    { border-right-color: #22c55e; border-left-color: var(--border); }
+    .tl-item.right .tl-content.election { border-right-color: #f59e0b; border-left-color: var(--border); }
+    .tl-item.right .tl-content.policy   { border-right-color: #3b82f6; border-left-color: var(--border); }
+    .tl-item.right .tl-content.truce    { border-right-color: #a855f7; border-left-color: var(--border); }
+
+    .tl-date { font-size: 11px; color: var(--muted); letter-spacing: .06em; margin-bottom: 6px; }
+    .tl-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+    .tl-quote {
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+      border-left: 2px solid var(--border); padding-left: 10px; margin-bottom: 10px;
+      font-style: italic;
+    }
+    .tl-item.right .tl-quote { border-left: none; border-right: 2px solid var(--border); padding-left: 0; padding-right: 10px; }
+    .tl-market {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px;
+    }
+    .tl-item.right .tl-market { justify-content: flex-start; }
+    .tl-item.left .tl-market { justify-content: flex-end; }
+    .mkt-chip {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    }
+    .mkt-chip.up   { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .mkt-chip.dn   { background: rgba(239,68,68,0.12); color: #f87171; }
+    .mkt-chip.neutral { background: rgba(100,116,139,0.12); color: var(--muted); }
+    .tl-tag {
+      display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px;
+      font-weight: 600; margin-bottom: 6px; letter-spacing: .04em;
+    }
+    .tl-tag.tariff   { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tl-tag.rally    { background: rgba(34,197,94,0.15); color: #86efac; }
+    .tl-tag.election { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tl-tag.policy   { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tl-tag.truce    { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+
+    /* ─── STATS ─── */
+    .stats-bar {
+      background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 32px 60px; max-width: 1300px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px;
+    }
+    .stat-box { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; }
+    .stat-num.dn { color: var(--red); }
+    .stat-num.up { color: var(--green); }
+    .stat-num.gold { color: var(--gold); }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+
+    /* ─── SVG CHART ─── */
+    svg { width: 100%; display: block; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center; padding: 32px; font-size: 12px; color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width: 800px) {
+      .chart-section, .timeline-section { padding: 20px 16px 60px; }
+      .timeline::before { left: 24px; }
+      .tl-item { grid-template-columns: 48px 1fr; }
+      .tl-item.left .tl-content, .tl-item.right .tl-content {
+        grid-column: 2; text-align: left; padding-left: 20px; padding-right: 16px;
+      }
+      .tl-item.left .tl-empty, .tl-item.right .tl-empty { display: none; }
+      .tl-node { grid-column: 1; padding-top: 18px; justify-content: center; }
+      .tl-item.left .tl-market, .tl-item.right .tl-market { justify-content: flex-start; }
+      .tl-item.left .tl-quote { border-left: 2px solid var(--border); border-right: none; padding-left: 10px; padding-right: 0; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); padding: 24px 16px; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-badge">🇺🇸 TRUMP × MARKETS · 数据分析</div>
+  <h1>特朗普言论 <span>×</span> 美股走势</h1>
+  <h1 style="font-size:clamp(1rem,2vw,1.4rem);font-weight:400;color:var(--muted);margin-top:6px;">2024年11月 — 2025年4月 关键事件时间线</h1>
+  <p style="margin-top:12px;">追踪总统发言与 S&P 500 / 道琼斯指数的关联波动</p>
+</header>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="leg-item"><div class="leg-dot election"></div>大选 / 就职</div>
+  <div class="leg-item"><div class="leg-dot tariff"></div>关税威胁 / 加征</div>
+  <div class="leg-item"><div class="leg-dot rally"></div>市场反弹 / 政策转向</div>
+  <div class="leg-item"><div class="leg-dot policy"></div>经济政策</div>
+  <div class="leg-item"><div class="leg-dot truce"></div>贸易停战 / 豁免</div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-box">
+    <div class="stat-num dn">−18.9%</div>
+    <div class="stat-label">S&P 500 高点→低点<br/>（2025年2月→4月）</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num up">+9.5%</div>
+    <div class="stat-label">S&P 500 单日最大涨幅<br/>（4月9日 关税暂停）</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num dn">−4.8%</div>
+    <div class="stat-label">S&P 500 单日最大跌幅<br/>（4月3日 对等关税）</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num gold">145%</div>
+    <div class="stat-label">对华关税峰值<br/>（4月9日）</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num up">$6.3T</div>
+    <div class="stat-label">市值蒸发后恢复<br/>（90天暂停后反弹）</div>
+  </div>
+</div>
+
+<!-- S&P 500 SPARKLINE CHART -->
+<div class="chart-section">
+  <div class="chart-label">📈 S&P 500 走势示意（2024.11 — 2025.04）</div>
+  <div class="sp500-chart">
+    <svg id="mainChart" viewBox="0 0 1200 300" preserveAspectRatio="none" style="height:260px;">
+      <defs>
+        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
+        </linearGradient>
+        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#3b82f6"/>
+          <stop offset="55%" stop-color="#22c55e"/>
+          <stop offset="75%" stop-color="#ef4444"/>
+          <stop offset="85%" stop-color="#ef4444"/>
+          <stop offset="100%" stop-color="#a855f7"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Grid lines -->
+      <line x1="0" y1="50"  x2="1200" y2="50"  stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="0" y1="100" x2="1200" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="0" y1="150" x2="1200" y2="150" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="0" y1="200" x2="1200" y2="200" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <line x1="0" y1="250" x2="1200" y2="250" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+      <!-- Price labels -->
+      <text x="8" y="48"  fill="#475569" font-size="11">6200</text>
+      <text x="8" y="98"  fill="#475569" font-size="11">6000</text>
+      <text x="8" y="148" fill="#475569" font-size="11">5700</text>
+      <text x="8" y="198" fill="#475569" font-size="11">5400</text>
+      <text x="8" y="248" fill="#475569" font-size="11">5000</text>
+
+      <!-- S&P 500 area + line (approximate) -->
+      <!-- Key data points (x = time 60→1180, y = price mapped 4800→6300 → y 280→20) -->
+      <!-- Scale: y = 280 - (price-4800)/(1500)*260 -->
+      <!-- Nov 2024: 5800 → y=107;  Jan20 inauguration: 6000→y=69;  Feb19 ATH: 6144→y=44 -->
+      <!-- Mar mid: 5670→y=122; Apr2 tariff: 5640→y=127; Apr3: 5160→y=210; Apr7: 4990→y=239 -->
+      <!-- Apr9 pause: 5460→y=176; end Apr: 5480→y=173 -->
+
+      <path id="areaPath"
+        d="M60,130 C80,125 100,115 130,107
+           L200,90 L250,75 L310,60 L350,44
+           C380,48 420,55 460,80
+           L500,90 L540,95 L580,100
+           L620,112 L660,118 L700,122
+           L730,127 L760,165 L790,210 L810,235 L830,239
+           L860,215 L890,176 L920,165
+           L960,168 L1000,158 L1040,162 L1080,165 L1120,168 L1160,170 L1180,173
+           V290 H60 Z"
+        fill="url(#areaGrad)" opacity="0.8"/>
+
+      <path id="linePath"
+        d="M60,130 C80,125 100,115 130,107
+           L200,90 L250,75 L310,60 L350,44
+           C380,48 420,55 460,80
+           L500,90 L540,95 L580,100
+           L620,112 L660,118 L700,122
+           L730,127 L760,165 L790,210 L810,235 L830,239
+           L860,215 L890,176 L920,165
+           L960,168 L1000,158 L1040,162 L1080,165 L1120,168 L1160,170 L1180,173"
+        fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+
+      <!-- Event markers -->
+      <!-- Nov 5 Election -->
+      <line x1="60" y1="20" x2="60" y2="280" stroke="rgba(245,158,11,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <circle cx="60" cy="130" r="6" fill="#f59e0b" class="chart-event" data-tip="2024.11.05 大选胜利 S&P+2.5%"/>
+      <!-- Jan 20 inauguration -->
+      <line x1="260" y1="20" x2="260" y2="280" stroke="rgba(245,158,11,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <circle cx="260" cy="73" r="6" fill="#f59e0b" class="chart-event" data-tip="2025.01.20 正式就职 S&P首周波动"/>
+      <!-- Feb 1 tariff -->
+      <line x1="380" y1="20" x2="380" y2="280" stroke="rgba(239,68,68,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <circle cx="380" cy="48" r="6" fill="#ef4444" class="chart-event" data-tip="2025.02.01 对墨加中加征关税"/>
+      <!-- Feb 19 ATH -->
+      <line x1="350" y1="20" x2="350" y2="280" stroke="rgba(34,197,94,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <circle cx="350" cy="44" r="8" fill="#22c55e" class="chart-event" data-tip="2025.02.19 S&P500历史新高 6144"/>
+      <!-- Apr 2 reciprocal tariff -->
+      <line x1="730" y1="20" x2="730" y2="280" stroke="rgba(239,68,68,0.6)" stroke-width="2" stroke-dasharray="4,3"/>
+      <circle cx="730" cy="127" r="8" fill="#ef4444" class="chart-event" data-tip="2025.04.02 对等关税宣布 全球最大关税日"/>
+      <!-- Apr 3 crash -->
+      <line x1="760" y1="20" x2="760" y2="280" stroke="rgba(239,68,68,0.8)" stroke-width="2"/>
+      <circle cx="760" cy="165" r="7" fill="#ef4444" class="chart-event" data-tip="2025.04.03 S&P -4.8% 单日"/>
+      <!-- Apr 7 low -->
+      <line x1="830" y1="20" x2="830" y2="280" stroke="rgba(239,68,68,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <circle cx="830" cy="239" r="7" fill="#ef4444" class="chart-event" data-tip="2025.04.07 阶段新低 4983"/>
+      <!-- Apr 9 pause rally -->
+      <line x1="890" y1="20" x2="890" y2="280" stroke="rgba(168,85,247,0.6)" stroke-width="2" stroke-dasharray="4,3"/>
+      <circle cx="890" cy="176" r="9" fill="#a855f7" class="chart-event" data-tip="2025.04.09 宣布90天暂停 S&P +9.5% 史诗级反弹"/>
+
+      <!-- X-axis labels -->
+      <text x="50"  y="295" fill="#475569" font-size="11" text-anchor="middle">11月</text>
+      <text x="190" y="295" fill="#475569" font-size="11" text-anchor="middle">1月</text>
+      <text x="350" y="295" fill="#475569" font-size="11" text-anchor="middle">2月</text>
+      <text x="520" y="295" fill="#475569" font-size="11" text-anchor="middle">3月</text>
+      <text x="730" y="295" fill="#475569" font-size="11" text-anchor="middle">4月初</text>
+      <text x="900" y="295" fill="#475569" font-size="11" text-anchor="middle">4月9日</text>
+      <text x="1100" y="295" fill="#475569" font-size="11" text-anchor="middle">4月底</text>
+    </svg>
+  </div>
+</div>
+
+<div class="chart-tooltip" id="tooltip"></div>
+
+<!-- TIMELINE -->
+<div class="timeline-section">
+  <div class="tl-header">
+    <h2>🗓️ 关键事件时间线</h2>
+    <p>特朗普发言原文（摘要）× 当日 / 次日市场反应</p>
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+</div>
+
+<footer>
+  数据来源：S&P Global · AP News · MoneyControl · 观察者网 · CNN Markets &nbsp;|&nbsp;
+  市场数据为参考值，本页仅供信息参考，不构成投资建议 &nbsp;|&nbsp;
+  制作：OpenClaw PM Agent · 2026.04
+</footer>
+
+<script>
+// ── 时间线数据 ──
+const events = [
+  {
+    date: "2024.11.05",
+    side: "left",
+    type: "election",
+    title: "🇺🇸 大选获胜",
+    quote: "「We are going to make America great again!」\n宣布赢得总统选举，承诺大规模减税和制造业回流。",
+    market: [
+      { label: "S&P 500 次日", chg: "+2.53%", dir: "up" },
+      { label: "道琼斯",        chg: "+3.57%", dir: "up" },
+      { label: "比特币",        chg: "+10%+",  dir: "up" },
+    ],
+    note: "市场押注「特朗普交易」——减税、放松监管利好股市。"
+  },
+  {
+    date: "2024.11.26",
+    side: "right",
+    type: "tariff",
+    title: "🚨 首次关税威胁：墨加中",
+    quote: "「On January 20th, as one of my first Executive Orders, I will sign all necessary documents to charge Mexico and Canada a 25% Tariff on ALL products coming into the United States.」",
+    market: [
+      { label: "S&P 500", chg: "小幅波动", dir: "neutral" },
+      { label: "墨西哥比索", chg: "-1.5%", dir: "dn" },
+    ],
+    note: "市场初步消化威胁，认为可能是谈判筹码。"
+  },
+  {
+    date: "2025.01.20",
+    side: "left",
+    type: "election",
+    title: "🎯 正式就职，签署大量行政令",
+    quote: "「The golden age of America begins now.」签署超60项行政令，包括退出巴黎协定、宣布国家能源紧急状态。",
+    market: [
+      { label: "S&P 500当日", chg: "+0.88%", dir: "up" },
+      { label: "科技股", chg: "分化", dir: "neutral" },
+    ],
+    note: "AI巨头英伟达等领涨，市场总体乐观。"
+  },
+  {
+    date: "2025.02.01",
+    side: "right",
+    type: "tariff",
+    title: "🔴 正式对墨加中加征关税",
+    quote: "「We have a big deficit with Canada. We're not going to put up with it anymore.」对加拿大/墨西哥加征25%，对中国额外加10%关税。",
+    market: [
+      { label: "S&P 500", chg: "-0.76%", dir: "dn" },
+      { label: "道琼斯", chg: "-0.54%", dir: "dn" },
+      { label: "加元/墨比索", chg: "急跌", dir: "dn" },
+    ],
+    note: "市场开始认真对待贸易战风险。"
+  },
+  {
+    date: "2025.02.03",
+    side: "left",
+    type: "truce",
+    title: "✅ 48小时后暂停墨加关税",
+    quote: "「We have made great progress with both Canada and Mexico.」宣布给墨加30天暂停期，换取对方边境管控承诺。",
+    market: [
+      { label: "S&P 500", chg: "+0.60%", dir: "up" },
+      { label: "加元/墨比索", chg: "回升", dir: "up" },
+    ],
+    note: "市场松了口气，但意识到政策不确定性极高。"
+  },
+  {
+    date: "2025.02.10",
+    side: "right",
+    type: "tariff",
+    title: "⚙️ 钢铝关税升至25%，无例外",
+    quote: "「There will be NO exceptions or exemptions to the Steel and Aluminum Tariffs.」宣布对所有进口钢铝征收25%关税。",
+    market: [
+      { label: "钢铝股", chg: "+5%+", dir: "up" },
+      { label: "汽车股", chg: "-2%", dir: "dn" },
+      { label: "S&P 500", chg: "小幅波动", dir: "neutral" },
+    ],
+    note: "钢铝股受益，下游制造业承压。"
+  },
+  {
+    date: "2025.02.19",
+    side: "left",
+    type: "rally",
+    title: "📈 S&P 500 创历史新高",
+    quote: "特朗普在达沃斯讲话后市场情绪高涨。AI算力需求+减税预期推升科技股。S&P 500 触及 6144 点历史高位。",
+    market: [
+      { label: "S&P 500", chg: "6144 历史新高", dir: "up" },
+      { label: "纳斯达克", chg: "+历史新高", dir: "up" },
+      { label: "英伟达", chg: "+大涨", dir: "up" },
+    ],
+    note: "减税+AI双重驱动，市场乐观情绪达到顶点。"
+  },
+  {
+    date: "2025.03.03",
+    side: "right",
+    type: "tariff",
+    title: "🔴 宣布3月4日重启加墨关税",
+    quote: "「There's no room left for Canada and Mexico to negotiate.」宣布3月4日正式对加/墨25%关税生效，对华额外关税升至20%。",
+    market: [
+      { label: "S&P 500", chg: "-1.76%", dir: "dn" },
+      { label: "道琼斯", chg: "-478点", dir: "dn" },
+      { label: "科技股", chg: "-1.5%", dir: "dn" },
+    ],
+    note: "市场开始为贸易战定价，高点后首次大幅回调。"
+  },
+  {
+    date: "2025.03.26",
+    side: "left",
+    type: "tariff",
+    title: "🚗 宣布25%汽车进口关税",
+    quote: "「We're going to charge 25% tariff on all cars coming from outside the United States. It'll all happen very quickly.」宣布4月3日起对进口汽车征25%关税。",
+    market: [
+      { label: "汽车股", chg: "宝马-5%+", dir: "dn" },
+      { label: "大众", chg: "-4%", dir: "dn" },
+      { label: "特斯拉", chg: "+1.2%（本土受益）", dir: "up" },
+    ],
+    note: "欧系车厂遭重创，美国本土制造商短暂受益。"
+  },
+  {
+    date: "2025.04.02",
+    side: "right",
+    type: "tariff",
+    title: "💣「解放日」—— 全球对等关税",
+    quote: "「April 2nd, 2025 will forever be known as Liberation Day!」签署对等关税行政令：对所有国家基础10%关税，对中国34%+额外关税，对欧盟20%，对越南46%……",
+    market: [
+      { label: "S&P 500当日", chg: "-4.8%", dir: "dn" },
+      { label: "道琼斯", chg: "-1679点", dir: "dn" },
+      { label: "纳斯达克", chg: "-6%", dir: "dn" },
+    ],
+    note: "市值单日蒸发超2万亿美元，为近年最大单日跌幅之一。"
+  },
+  {
+    date: "2025.04.03-04",
+    side: "left",
+    type: "tariff",
+    title: "📉 连续暴跌，全球恐慌性抛售",
+    quote: "特朗普在社交媒体发文：「Stay COOL! Everything is going to work out well. The USA will be richer than ever before!」",
+    market: [
+      { label: "S&P 500两日", chg: "-10.5%", dir: "dn" },
+      { label: "道琼斯两日", chg: "-3500点", dir: "dn" },
+      { label: "恐慌指数VIX", chg: "飙升至45", dir: "dn" },
+    ],
+    note: "全球股市共同暴跌，中欧亚市场连锁反应，史称「黑色周四周五」。"
+  },
+  {
+    date: "2025.04.07",
+    side: "right",
+    type: "tariff",
+    title: "📉 S&P阶段新低 4983点",
+    quote: "特朗普：「China wants to make a deal. But they don't know how to do it. Let's see what happens!」\n对华关税宣布升至104%。",
+    market: [
+      { label: "S&P 500", chg: "4983 阶段低点", dir: "dn" },
+      { label: "道琼斯", chg: "-2%", dir: "dn" },
+      { label: "美债收益率", chg: "异常飙升", dir: "dn" },
+    ],
+    note: "美债抛售引发「美元信用」担忧，市场进入最恐慌阶段。"
+  },
+  {
+    date: "2025.04.09",
+    side: "left",
+    type: "truce",
+    title: "🚀 史诗级反弹！宣布90天暂停",
+    quote: "「I have authorized a 90 day PAUSE, and a substantially lowered Reciprocal Tariff during this period, of 10%, also effective immediately.」——Truth Social\n但同时宣布对华关税升至125%。",
+    market: [
+      { label: "S&P 500", chg: "+9.52%", dir: "up" },
+      { label: "道琼斯", chg: "+2962点", dir: "up" },
+      { label: "纳斯达克", chg: "+12.2%", dir: "up" },
+    ],
+    note: "为2008年金融危机以来最大单日涨幅之一，数小时内市值恢复逾$6万亿。"
+  },
+  {
+    date: "2025.04.13",
+    side: "right",
+    type: "truce",
+    title: "📱 科技品豁免中国关税",
+    quote: "「We are not going to give China any kind of break on tariffs.」但同时宣布手机、笔记本电脑、芯片等电子品暂时豁免对华关税。",
+    market: [
+      { label: "苹果 AAPL", chg: "+3.5%", dir: "up" },
+      { label: "纳斯达克", chg: "+1.2%", dir: "up" },
+      { label: "S&P 500", chg: "+0.8%", dir: "up" },
+    ],
+    note: "「又打又拉」策略持续，市场形成「特朗普关税交易」投资法则。"
+  },
+  {
+    date: "2025.05.12",
+    side: "left",
+    type: "truce",
+    title: "🕊️ 中美关税停战90天",
+    quote: "「We're not looking to hurt China. We just want fairness.」中美达成协议：美方对华关税由145%降至30%，中方由125%降至10%，停战90天。",
+    market: [
+      { label: "S&P 500", chg: "+3.26%", dir: "up" },
+      { label: "道琼斯", chg: "+1160点", dir: "up" },
+      { label: "中概股", chg: "+5%+", dir: "up" },
+    ],
+    note: "全球市场大幅反弹，贸易战阶段性降温，但不确定性未消除。"
+  },
+];
+
+// 渲染时间线
+const container = document.getElementById('timeline');
+events.forEach((ev, i) => {
+  const mktHtml = ev.market.map(m =>
+    `<span class="mkt-chip ${m.dir}">${m.dir==='up'?'▲':m.dir==='dn'?'▼':'—'} ${m.label} ${m.chg}</span>`
+  ).join('');
+
+  const cardHtml = `
+    <div class="tl-content ${ev.type}">
+      <div class="tl-date">${ev.date}</div>
+      <span class="tl-tag ${ev.type}">${
+        {election:'🏛 大选/就职',tariff:'⚠️ 关税政策',rally:'📈 市场反弹',policy:'📋 经济政策',truce:'🕊 停战/豁免'}[ev.type]
+      }</span>
+      <div class="tl-title">${ev.title}</div>
+      <div class="tl-quote">${ev.quote.replace(/\n/g,'<br/>')}</div>
+      <div class="tl-market">${mktHtml}</div>
+      ${ev.note ? `<div style="font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06)">💡 ${ev.note}</div>` : ''}
+    </div>`;
+
+  const nodeHtml = `<div class="tl-node"><div class="node-dot ${ev.type}"></div></div>`;
+
+  const item = document.createElement('div');
+  item.className = `tl-item ${ev.side}`;
+
+  if (ev.side === 'left') {
+    item.innerHTML = cardHtml + nodeHtml + `<div class="tl-empty"></div>`;
+    item.querySelector('.tl-content').style.gridColumn = '1';
+    item.querySelector('.tl-node').style.gridColumn = '2';
+    item.querySelector('.tl-empty').style.gridColumn = '3';
+  } else {
+    item.innerHTML = `<div class="tl-empty"></div>` + nodeHtml + cardHtml;
+    item.querySelector('.tl-empty').style.gridColumn = '1';
+    item.querySelector('.tl-node').style.gridColumn = '2';
+    item.querySelector('.tl-content').style.gridColumn = '3';
+  }
+  container.appendChild(item);
+});
+
+// Chart tooltips
+const tooltip = document.getElementById('tooltip');
+document.querySelectorAll('.chart-event').forEach(dot => {
+  dot.addEventListener('mouseenter', e => {
+    tooltip.textContent = dot.dataset.tip;
+    tooltip.style.opacity = '1';
+  });
+  dot.addEventListener('mousemove', e => {
+    tooltip.style.left = (e.clientX + 14) + 'px';
+    tooltip.style.top  = (e.clientY - 8)  + 'px';
+  });
+  dot.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; });
+});
+</script>
+</body>
+</html>
