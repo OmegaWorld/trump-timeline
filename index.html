@@ -3,424 +3,422 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>特朗普言论 × 美股走势 时间线 2024.11 — 2026.04</title>
+  <title>特朗普 × 美股 × A股 时间线 2024.11 — 2026.04</title>
   <style>
     :root {
-      --bg: #0b0e17;
-      --bg2: #111420;
-      --bg3: #181c2a;
-      --red: #ef4444;
-      --green: #22c55e;
-      --gold: #f59e0b;
-      --blue: #3b82f6;
-      --purple: #a855f7;
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --border: rgba(255,255,255,0.07);
+      --bg:#0b0e17; --bg2:#111420; --bg3:#181c2a;
+      --red:#ef4444; --green:#22c55e; --gold:#f59e0b;
+      --blue:#3b82f6; --purple:#a855f7; --orange:#f97316;
+      --text:#e2e8f0; --muted:#64748b; --border:rgba(255,255,255,0.07);
+      --cn-red:#e02020; --cn-green:#00b578;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg); color: var(--text);
-      overflow-x: hidden;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;
+      background:var(--bg);color:var(--text);overflow-x:hidden;}
 
-    /* HEADER */
-    header {
-      background: linear-gradient(135deg, #0b0e17 0%, #1a1230 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 56px 0 40px; text-align: center;
-    }
-    .header-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3);
-      color: #fca5a5; padding: 6px 16px; border-radius: 999px;
-      font-size: 12px; font-weight: 600; letter-spacing: .08em;
-      margin-bottom: 20px;
-    }
-    header h1 { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 10px; }
-    header h1 span { color: var(--gold); }
-    header p { color: var(--muted); font-size: 14px; }
+    /* ── HEADER ── */
+    header{background:linear-gradient(135deg,#0b0e17 0%,#1a1230 100%);
+      border-bottom:1px solid var(--border);padding:56px 0 40px;text-align:center;}
+    .header-badge{display:inline-flex;align-items:center;gap:8px;
+      background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);
+      color:#fca5a5;padding:6px 16px;border-radius:999px;
+      font-size:12px;font-weight:600;letter-spacing:.08em;margin-bottom:20px;}
+    header h1{font-size:clamp(1.6rem,4vw,2.8rem);font-weight:800;margin-bottom:8px;}
+    header h1 span{color:var(--gold);}
+    header p{color:var(--muted);font-size:14px;}
 
-    /* LEGEND */
-    .legend {
-      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
-      padding: 20px; background: var(--bg2); border-bottom: 1px solid var(--border);
-    }
-    .leg-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
-    .leg-dot { width: 12px; height: 12px; border-radius: 3px; }
-    .leg-dot.tariff   { background: #ef4444; }
-    .leg-dot.rally    { background: #22c55e; }
-    .leg-dot.election { background: #f59e0b; }
-    .leg-dot.policy   { background: #3b82f6; }
-    .leg-dot.truce    { background: #a855f7; }
+    /* ── LEGEND ── */
+    .legend{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
+      padding:18px 20px;background:var(--bg2);border-bottom:1px solid var(--border);}
+    .leg-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);}
+    .leg-dot{width:11px;height:11px;border-radius:3px;}
+    .leg-dot.tariff{background:#ef4444;} .leg-dot.rally{background:#22c55e;}
+    .leg-dot.election{background:#f59e0b;} .leg-dot.policy{background:#3b82f6;}
+    .leg-dot.truce{background:#a855f7;}
+    .leg-flag{font-size:15px;}
 
-    /* STATS */
-    .stats-bar {
-      background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 32px 60px;
-      display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px;
-      max-width: 1300px; margin: 0 auto;
-    }
-    .stat-box { text-align: center; }
-    .stat-num { font-size: 1.8rem; font-weight: 800; }
-    .stat-num.dn { color: var(--red); }
-    .stat-num.up { color: var(--green); }
-    .stat-num.gold { color: var(--gold); }
-    .stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+    /* ── STATS ── */
+    .stats-wrap{background:var(--bg2);border-bottom:1px solid var(--border);}
+    .stats-bar{display:grid;grid-template-columns:repeat(7,1fr);gap:16px;
+      padding:28px 60px;max-width:1400px;margin:0 auto;}
+    .stat-box{text-align:center;}
+    .stat-num{font-size:1.6rem;font-weight:800;}
+    .stat-num.dn{color:var(--red);} .stat-num.up{color:var(--green);}
+    .stat-num.gold{color:var(--gold);} .stat-num.cn{color:#e02020;}
+    .stat-label{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;}
+    .stat-divider{width:1px;background:var(--border);margin:8px auto;}
 
-    /* CHART */
-    .chart-section { padding: 40px 60px 0; max-width: 1300px; margin: 0 auto; }
-    .chart-label { font-size: 12px; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
-    .sp500-chart { position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; overflow: visible; }
-    .chart-tooltip {
-      position: fixed; background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 8px; padding: 10px 14px; font-size: 12px; pointer-events: none;
-      opacity: 0; transition: opacity .15s; z-index: 200; max-width: 240px; line-height: 1.6;
-    }
+    /* ── DUAL CHART ── */
+    .charts-section{padding:40px 60px 0;max-width:1400px;margin:0 auto;}
+    .charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .chart-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+    .chart-card-head{padding:14px 20px 10px;display:flex;align-items:center;gap:10px;
+      border-bottom:1px solid var(--border);}
+    .chart-card-head .flag{font-size:20px;}
+    .chart-card-head .label{font-size:13px;font-weight:600;}
+    .chart-card-head .sub{font-size:11px;color:var(--muted);margin-left:auto;}
+    .chart-svg-wrap svg{width:100%;display:block;}
+    .chart-tooltip{position:fixed;background:var(--bg3);border:1px solid var(--border);
+      border-radius:8px;padding:9px 13px;font-size:12px;pointer-events:none;
+      opacity:0;transition:opacity .15s;z-index:200;max-width:230px;line-height:1.6;}
 
-    /* PHASE BAND */
-    .phase-bands { display: flex; gap: 2px; max-width: 1300px; margin: 8px 60px 0; }
-    .phase { flex: 1; text-align: center; font-size: 10px; padding: 4px 0; border-radius: 4px; color: rgba(255,255,255,0.5); font-weight: 600; letter-spacing: .05em; }
-    .phase.p1 { background: rgba(245,158,11,0.15); }
-    .phase.p2 { background: rgba(239,68,68,0.15); }
-    .phase.p3 { background: rgba(34,197,94,0.12); }
-    .phase.p4 { background: rgba(239,68,68,0.12); }
-    .phase.p5 { background: rgba(34,197,94,0.15); }
-    .phase.p6 { background: rgba(239,68,68,0.13); }
+    /* ── PHASE BANDS ── */
+    .phase-bands{display:flex;gap:2px;max-width:1400px;margin:8px 60px 0;}
+    .phase{flex:1;text-align:center;font-size:10px;padding:4px 0;border-radius:4px;
+      color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:.04em;}
+    .phase.p1{background:rgba(245,158,11,0.15);}  .phase.p2{background:rgba(239,68,68,0.15);}
+    .phase.p3{background:rgba(34,197,94,0.12);}   .phase.p4{background:rgba(239,68,68,0.12);}
+    .phase.p5{background:rgba(34,197,94,0.15);}   .phase.p6{background:rgba(239,68,68,0.13);}
 
-    /* TIMELINE */
-    .timeline-section { padding: 0 60px 80px; max-width: 1300px; margin: 0 auto; }
-    .tl-header { text-align: center; padding: 48px 0 32px; }
-    .tl-header h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
-    .tl-header p { color: var(--muted); font-size: 14px; }
+    /* ── TIMELINE ── */
+    .timeline-section{padding:0 60px 80px;max-width:1400px;margin:0 auto;}
+    .tl-header{text-align:center;padding:48px 0 28px;}
+    .tl-header h2{font-size:1.4rem;font-weight:700;margin-bottom:8px;}
+    .tl-header p{color:var(--muted);font-size:13px;}
 
-    /* PHASE DIVIDER */
-    .phase-divider {
-      display: flex; align-items: center; gap: 16px;
-      margin: 32px 0 20px; padding: 12px 20px; border-radius: 8px;
-    }
-    .phase-divider.p1 { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
-    .phase-divider.p2 { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
-    .phase-divider.p3 { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); }
-    .phase-divider.p4 { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
-    .phase-divider.p5 { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); }
-    .phase-divider.p6 { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
-    .phase-divider .ph-num { font-size: 22px; font-weight: 900; }
-    .phase-divider.p1 .ph-num { color: var(--gold); }
-    .phase-divider.p2 .ph-num { color: var(--red); }
-    .phase-divider.p3 .ph-num { color: var(--green); }
-    .phase-divider.p4 .ph-num { color: var(--red); }
-    .phase-divider.p5 .ph-num { color: var(--green); }
-    .phase-divider.p6 .ph-num { color: var(--red); }
-    .phase-divider .ph-title { font-size: 15px; font-weight: 700; }
-    .phase-divider .ph-range { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    /* phase divider */
+    .phase-divider{display:flex;align-items:center;gap:16px;
+      margin:32px 0 16px;padding:12px 20px;border-radius:8px;}
+    .phase-divider.p1{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);}
+    .phase-divider.p2{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);}
+    .phase-divider.p3{background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);}
+    .phase-divider.p4{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);}
+    .phase-divider.p5{background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);}
+    .phase-divider.p6{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);}
+    .ph-num{font-size:22px;font-weight:900;}
+    .phase-divider.p1 .ph-num{color:var(--gold);}  .phase-divider.p2 .ph-num{color:var(--red);}
+    .phase-divider.p3 .ph-num{color:var(--green);} .phase-divider.p4 .ph-num{color:var(--red);}
+    .phase-divider.p5 .ph-num{color:var(--green);} .phase-divider.p6 .ph-num{color:var(--red);}
+    .ph-title{font-size:15px;font-weight:700;}
+    .ph-range{font-size:12px;color:var(--muted);margin-top:2px;}
 
-    .timeline { position: relative; }
-    .timeline::before {
-      content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
-      width: 2px; background: linear-gradient(to bottom, var(--border), rgba(239,68,68,0.4), var(--border));
-      transform: translateX(-50%);
-    }
-    .tl-item {
-      display: grid; grid-template-columns: 1fr 60px 1fr;
-      gap: 0; margin-bottom: 12px; align-items: start;
-    }
-    .tl-node { grid-column: 2; display: flex; align-items: flex-start; justify-content: center; padding-top: 18px; }
-    .node-dot {
-      width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--bg);
-      flex-shrink: 0; cursor: pointer; transition: transform .2s;
-      position: relative; z-index: 1;
-    }
-    .node-dot:hover { transform: scale(1.5); }
-    .node-dot.tariff   { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,0.2); }
-    .node-dot.rally    { background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.2); }
-    .node-dot.election { background: #f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,0.2); }
-    .node-dot.policy   { background: #3b82f6; box-shadow: 0 0 0 4px rgba(59,130,246,0.2); }
-    .node-dot.truce    { background: #a855f7; box-shadow: 0 0 0 4px rgba(168,85,247,0.2); }
+    /* timeline spine */
+    .timeline{position:relative;}
+    .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;
+      width:2px;background:linear-gradient(to bottom,var(--border),rgba(239,68,68,0.4),var(--border));
+      transform:translateX(-50%);}
 
-    .tl-content {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 12px; padding: 16px 20px; cursor: pointer;
-      transition: border-color .2s, transform .2s;
-    }
-    .tl-content:hover { transform: translateY(-2px); }
-    .tl-item.left  .tl-content { grid-column: 1; text-align: right; padding-right: 32px; border-left-width: 3px; }
-    .tl-item.right .tl-content { grid-column: 3; text-align: left; padding-left: 32px; border-right-width: 3px; }
-    .tl-item.left  .tl-empty   { grid-column: 3; }
-    .tl-item.right .tl-empty   { grid-column: 1; }
+    .tl-item{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;margin-bottom:10px;align-items:start;}
+    .tl-node{grid-column:2;display:flex;align-items:flex-start;justify-content:center;padding-top:18px;}
+    .node-dot{width:16px;height:16px;border-radius:50%;border:3px solid var(--bg);
+      flex-shrink:0;cursor:pointer;transition:transform .2s;position:relative;z-index:1;}
+    .node-dot:hover{transform:scale(1.5);}
+    .node-dot.tariff{background:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.2);}
+    .node-dot.rally{background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.2);}
+    .node-dot.election{background:#f59e0b;box-shadow:0 0 0 4px rgba(245,158,11,.2);}
+    .node-dot.policy{background:#3b82f6;box-shadow:0 0 0 4px rgba(59,130,246,.2);}
+    .node-dot.truce{background:#a855f7;box-shadow:0 0 0 4px rgba(168,85,247,.2);}
 
-    .tl-content.tariff   { border-color: rgba(239,68,68,0.35); }
-    .tl-content.rally    { border-color: rgba(34,197,94,0.35); }
-    .tl-content.election { border-color: rgba(245,158,11,0.35); }
-    .tl-content.policy   { border-color: rgba(59,130,246,0.35); }
-    .tl-content.truce    { border-color: rgba(168,85,247,0.35); }
+    /* card */
+    .tl-content{background:var(--bg2);border:1px solid var(--border);
+      border-radius:12px;padding:16px 18px;cursor:pointer;
+      transition:border-color .2s,transform .2s;}
+    .tl-content:hover{transform:translateY(-2px);}
+    .tl-item.left  .tl-content{grid-column:1;padding-right:28px;border-left-width:3px;}
+    .tl-item.right .tl-content{grid-column:3;padding-left:28px;border-right-width:3px;}
+    .tl-item.left  .tl-empty{grid-column:3;}
+    .tl-item.right .tl-empty{grid-column:1;}
+    .tl-content.tariff{border-color:rgba(239,68,68,.35);}
+    .tl-content.rally{border-color:rgba(34,197,94,.35);}
+    .tl-content.election{border-color:rgba(245,158,11,.35);}
+    .tl-content.policy{border-color:rgba(59,130,246,.35);}
+    .tl-content.truce{border-color:rgba(168,85,247,.35);}
 
-    .tl-date { font-size: 11px; color: var(--muted); letter-spacing: .06em; margin-bottom: 6px; }
-    .tl-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
-    .tl-quote {
-      font-size: 13px; color: var(--muted); line-height: 1.7;
-      border-left: 2px solid rgba(255,255,255,0.1); padding-left: 10px; margin-bottom: 10px;
-      font-style: italic;
-    }
-    .tl-item.right .tl-quote { border-left: 2px solid rgba(255,255,255,0.1); border-right: none; }
-    .tl-item.left  .tl-quote { border-left: none; border-right: 2px solid rgba(255,255,255,0.1); padding-left: 0; padding-right: 10px; }
-    .tl-market { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-    .tl-item.right .tl-market { justify-content: flex-start; }
-    .tl-item.left  .tl-market { justify-content: flex-end; }
-    .mkt-chip {
-      display: inline-flex; align-items: center; gap: 4px;
-      padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
-    }
-    .mkt-chip.up      { background: rgba(34,197,94,0.12); color: #4ade80; }
-    .mkt-chip.dn      { background: rgba(239,68,68,0.12); color: #f87171; }
-    .mkt-chip.neutral { background: rgba(100,116,139,0.12); color: var(--muted); }
-    .tl-tag {
-      display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px;
-      font-weight: 600; margin-bottom: 6px; letter-spacing: .04em;
-    }
-    .tl-tag.tariff   { background: rgba(239,68,68,0.15); color: #fca5a5; }
-    .tl-tag.rally    { background: rgba(34,197,94,0.15); color: #86efac; }
-    .tl-tag.election { background: rgba(245,158,11,0.15); color: #fcd34d; }
-    .tl-tag.policy   { background: rgba(59,130,246,0.15); color: #93c5fd; }
-    .tl-tag.truce    { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .tl-date{font-size:11px;color:var(--muted);letter-spacing:.06em;margin-bottom:5px;}
+    .tl-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;
+      font-weight:600;margin-bottom:6px;letter-spacing:.04em;}
+    .tl-tag.tariff{background:rgba(239,68,68,.15);color:#fca5a5;}
+    .tl-tag.rally{background:rgba(34,197,94,.15);color:#86efac;}
+    .tl-tag.election{background:rgba(245,158,11,.15);color:#fcd34d;}
+    .tl-tag.policy{background:rgba(59,130,246,.15);color:#93c5fd;}
+    .tl-tag.truce{background:rgba(168,85,247,.15);color:#d8b4fe;}
+    .tl-title{font-size:14px;font-weight:700;margin-bottom:8px;line-height:1.4;}
+    .tl-quote{font-size:12px;color:var(--muted);line-height:1.7;
+      border-left:2px solid rgba(255,255,255,.1);padding-left:9px;
+      margin-bottom:10px;font-style:italic;}
+    .tl-item.left .tl-quote{border-left:none;border-right:2px solid rgba(255,255,255,.1);
+      padding-left:0;padding-right:9px;text-align:right;}
 
-    /* RESPONSIVE */
-    @media(max-width: 800px) {
-      .chart-section, .timeline-section { padding: 20px 16px 60px; }
-      .phase-bands { margin: 8px 16px 0; }
-      .stats-bar { grid-template-columns: repeat(3,1fr); padding: 24px 16px; }
-      .timeline::before { left: 24px; }
-      .tl-item { grid-template-columns: 48px 1fr; }
-      .tl-item.left .tl-content, .tl-item.right .tl-content {
-        grid-column: 2; text-align: left; padding-left: 20px; padding-right: 16px;
-      }
-      .tl-item.left .tl-empty, .tl-item.right .tl-empty { display: none; }
-      .tl-node { grid-column: 1; padding-top: 18px; justify-content: center; }
-      .tl-item.left .tl-market, .tl-item.right .tl-market { justify-content: flex-start; }
-      .tl-item.left .tl-quote { border-left: 2px solid rgba(255,255,255,0.1); border-right: none; padding-left: 10px; padding-right: 0; }
-    }
+    /* market chips dual */
+    .mkt-section{margin-top:10px;}
+    .mkt-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px;}
+    .tl-item.left .mkt-row{justify-content:flex-end;}
+    .market-label{font-size:10px;color:var(--muted);min-width:14px;text-align:center;}
+    .mkt-chip{display:inline-flex;align-items:center;gap:3px;
+      padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;}
+    .mkt-chip.us-up{background:rgba(34,197,94,.12);color:#4ade80;}
+    .mkt-chip.us-dn{background:rgba(239,68,68,.12);color:#f87171;}
+    .mkt-chip.us-neu{background:rgba(100,116,139,.1);color:var(--muted);}
+    .mkt-chip.cn-up{background:rgba(224,32,32,.15);color:#ff8080;}   /* A股涨用红 */
+    .mkt-chip.cn-dn{background:rgba(0,181,120,.12);color:#34d399;}    /* A股跌用绿 */
+    .mkt-chip.cn-neu{background:rgba(100,116,139,.1);color:var(--muted);}
+    .mkt-divider{height:1px;background:var(--border);margin:8px 0;}
+    .mkt-note{font-size:11px;color:#475569;padding-top:6px;border-top:1px solid rgba(255,255,255,.05);line-height:1.6;}
 
-    svg { width: 100%; display: block; }
-    footer {
-      text-align: center; padding: 32px; font-size: 12px; color: var(--muted);
-      border-top: 1px solid var(--border);
+    /* responsive */
+    @media(max-width:900px){
+      .charts-grid{grid-template-columns:1fr;}
+      .charts-section,.timeline-section{padding:20px 16px 60px;}
+      .phase-bands{margin:8px 16px 0;}
+      .stats-bar{grid-template-columns:repeat(4,1fr);padding:20px 16px;}
+      .timeline::before{left:24px;}
+      .tl-item{grid-template-columns:48px 1fr;}
+      .tl-item.left .tl-content,.tl-item.right .tl-content{
+        grid-column:2;padding-left:18px;padding-right:14px;text-align:left;}
+      .tl-item.left .tl-empty,.tl-item.right .tl-empty{display:none;}
+      .tl-node{grid-column:1;padding-top:18px;justify-content:center;}
+      .tl-item.left .tl-market,.tl-item.right .tl-market{justify-content:flex-start;}
+      .tl-item.left .mkt-row{justify-content:flex-start;}
+      .tl-item.left .tl-quote{border-left:2px solid rgba(255,255,255,.1);border-right:none;
+        padding-left:9px;padding-right:0;text-align:left;}
     }
+    footer{text-align:center;padding:32px;font-size:12px;color:var(--muted);
+      border-top:1px solid var(--border);}
+    svg{display:block;}
   </style>
 </head>
 <body>
 
 <header>
-  <div class="header-badge">🇺🇸 TRUMP × MARKETS · 完整追踪</div>
-  <h1>特朗普言论 <span>×</span> 美股走势</h1>
-  <h1 style="font-size:clamp(1rem,2vw,1.4rem);font-weight:400;color:var(--muted);margin-top:6px;">2024年11月 — 2026年4月 · 完整事件时间线（共25个关键节点）</h1>
-  <p style="margin-top:12px;">追踪总统发言与 S&P 500 / 道琼斯指数的关联波动 · 持续更新</p>
+  <div class="header-badge">🇺🇸🇨🇳 TRUMP × US MARKETS × A-SHARES · 完整追踪</div>
+  <h1>特朗普 <span>×</span> 美股 <span>×</span> A股</h1>
+  <h1 style="font-size:clamp(1rem,2vw,1.4rem);font-weight:400;color:var(--muted);margin-top:6px;">
+    2024年11月 — 2026年4月 · 美股与A股同屏对比 · 25个关键节点
+  </h1>
+  <p style="margin-top:12px;">特朗普每次发言，美股怎么反应？A股又如何走？同屏对比，一目了然</p>
 </header>
 
 <div class="legend">
-  <div class="leg-item"><div class="leg-dot election"></div>大选 / 就职</div>
-  <div class="leg-item"><div class="leg-dot tariff"></div>关税威胁 / 加征</div>
-  <div class="leg-item"><div class="leg-dot rally"></div>市场反弹 / 新高</div>
-  <div class="leg-item"><div class="leg-dot policy"></div>货币 / 经济政策</div>
-  <div class="leg-item"><div class="leg-dot truce"></div>停战 / 豁免 / 暂停</div>
+  <div class="leg-item"><div class="leg-dot election"></div>大选/就职</div>
+  <div class="leg-item"><div class="leg-dot tariff"></div>关税威胁/加征</div>
+  <div class="leg-item"><div class="leg-dot rally"></div>市场新高/反弹</div>
+  <div class="leg-item"><div class="leg-dot policy"></div>货币/经济政策</div>
+  <div class="leg-item"><div class="leg-dot truce"></div>停战/豁免/暂停</div>
+  <div class="leg-item"><span class="leg-flag">🇺🇸</span> S&P 500（美股）</div>
+  <div class="leg-item"><span class="leg-flag">🇨🇳</span> 上证指数（A股）</div>
+  <div class="leg-item" style="font-size:11px;color:#64748b;">⚠ A股涨=🔴 跌=🟢（中国规则）</div>
 </div>
 
 <!-- STATS -->
+<div class="stats-wrap">
 <div class="stats-bar">
   <div class="stat-box">
     <div class="stat-num dn">−18.9%</div>
-    <div class="stat-label">S&P 高点→低点<br/>2月→4月</div>
+    <div class="stat-label">🇺🇸 S&P高→低<br/>2月→4月</div>
   </div>
   <div class="stat-box">
-    <div class="stat-num up">+9.5%</div>
-    <div class="stat-label">单日最大涨幅<br/>4月9日暂停</div>
+    <div class="stat-num up">+9.52%</div>
+    <div class="stat-label">🇺🇸 单日最大涨<br/>4月9日暂停</div>
   </div>
   <div class="stat-box">
-    <div class="stat-num gold">145%</div>
-    <div class="stat-label">对华关税峰值<br/>2025年4月</div>
+    <div class="stat-num gold">+18%</div>
+    <div class="stat-label">🇺🇸 2025全年S&P<br/>第三连涨年</div>
+  </div>
+  <div class="stat-box" style="background:rgba(255,255,255,0.02);border-radius:8px;padding:8px;">
+    <div style="font-size:10px;color:#475569;margin-bottom:4px;">— 分界线 —</div>
   </div>
   <div class="stat-box">
-    <div class="stat-num up">+18%</div>
-    <div class="stat-label">2025全年S&P收益<br/>第三连涨年</div>
+    <div class="stat-num cn">−7.5%</div>
+    <div class="stat-label">🇨🇳 A股4月7日<br/>黑色星期一</div>
   </div>
   <div class="stat-box">
-    <div class="stat-num up">6932</div>
-    <div class="stat-label">S&P 历史新高<br/>2025年12月24日</div>
+    <div class="stat-num up" style="color:#e02020">+8%</div>
+    <div class="stat-label">🇨🇳 中美停战反弹<br/>2025年5月13日</div>
   </div>
   <div class="stat-box">
-    <div class="stat-num dn">−10%+</div>
-    <div class="stat-label">2026年初回调<br/>关税新一轮</div>
+    <div class="stat-num gold">3500</div>
+    <div class="stat-label">🇨🇳 上证2025<br/>年末中枢点位</div>
   </div>
 </div>
-
-<!-- S&P CHART -->
-<div class="chart-section">
-  <div class="chart-label">📈 S&P 500 走势示意（2024.11 — 2026.04）</div>
-  <div class="sp500-chart">
-    <svg id="mainChart" viewBox="0 0 1400 300" preserveAspectRatio="none" style="height:260px;">
-      <defs>
-        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
-          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
-        </linearGradient>
-        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"   stop-color="#f59e0b"/>
-          <stop offset="22%"  stop-color="#22c55e"/>
-          <stop offset="40%"  stop-color="#ef4444"/>
-          <stop offset="48%"  stop-color="#ef4444"/>
-          <stop offset="55%"  stop-color="#a855f7"/>
-          <stop offset="62%"  stop-color="#22c55e"/>
-          <stop offset="78%"  stop-color="#22c55e"/>
-          <stop offset="85%"  stop-color="#ef4444"/>
-          <stop offset="92%"  stop-color="#22c55e"/>
-          <stop offset="100%" stop-color="#ef4444"/>
-        </linearGradient>
-      </defs>
-
-      <!-- Grid -->
-      <line x1="0" y1="40"  x2="1400" y2="40"  stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-      <line x1="0" y1="90"  x2="1400" y2="90"  stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-      <line x1="0" y1="140" x2="1400" y2="140" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-      <line x1="0" y1="190" x2="1400" y2="190" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-      <line x1="0" y1="240" x2="1400" y2="240" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-
-      <!-- Price labels -->
-      <text x="8" y="38"  fill="#334155" font-size="10">6900</text>
-      <text x="8" y="88"  fill="#334155" font-size="10">6500</text>
-      <text x="8" y="138" fill="#334155" font-size="10">6000</text>
-      <text x="8" y="188" fill="#334155" font-size="10">5500</text>
-      <text x="8" y="238" fill="#334155" font-size="10">5000</text>
-
-      <!--
-        Scale: y = 280 - (price - 4800) / 2400 * 260
-        5000→258  5200→236  5400→215  5600→193  5800→171
-        6000→150  6100→139  6144→134  6200→129  6400→107
-        6500→96   6700→74   6932→49   7000→43
-        x: 50 (Nov24) → 1380 (Apr26), span = 1330, months=18
-        per month ≈ 73.9px
-        Nov24=50  Dec24=124  Jan25=198  Feb25=272  Mar25=346  Apr25=420
-        May25=494 Jun25=568  Jul25=641  Aug25=715  Sep25=789  Oct25=863
-        Nov25=937 Dec25=1010 Jan26=1084 Feb26=1158 Mar26=1232 Apr26=1306
-      -->
-
-      <!-- Area fill -->
-      <path d="
-        M50,171 L80,165 L110,158 L140,152
-        L198,150 L240,140 L272,134
-        C290,138 310,148 346,162
-        L380,171 L420,215 L445,245 L460,258
-        L480,236 L494,193
-        C510,183 530,171 568,158
-        L641,140 L715,129 L760,107
-        L789,96  L830,74  L863,84
-        L880,90  L900,80  L937,70
-        L970,55  L1010,49
-        L1040,58 L1084,74 L1110,90
-        L1158,100 L1200,110 L1232,107
-        L1270,100 L1306,115
-        V280 H50 Z"
-        fill="url(#areaGrad)" opacity="0.9"/>
-
-      <!-- Line -->
-      <path d="
-        M50,171 L80,165 L110,158 L140,152
-        L198,150 L240,140 L272,134
-        C290,138 310,148 346,162
-        L380,171 L420,215 L445,245 L460,258
-        L480,236 L494,193
-        C510,183 530,171 568,158
-        L641,140 L715,129 L760,107
-        L789,96  L830,74  L863,84
-        L880,90  L900,80  L937,70
-        L970,55  L1010,49
-        L1040,58 L1084,74 L1110,90
-        L1158,100 L1200,110 L1232,107
-        L1270,100 L1306,115"
-        fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linejoin="round"/>
-
-      <!-- Phase bg zones -->
-      <rect x="50"  y="20" width="172" height="255" fill="rgba(245,158,11,0.03)"/>
-      <rect x="222" y="20" width="238" height="255" fill="rgba(239,68,68,0.04)"/>
-      <rect x="460" y="20" width="250" height="255" fill="rgba(34,197,94,0.03)"/>
-      <rect x="710" y="20" width="170" height="255" fill="rgba(34,197,94,0.04)"/>
-      <rect x="880" y="20" width="200" height="255" fill="rgba(34,197,94,0.04)"/>
-      <rect x="1080" y="20" width="280" height="255" fill="rgba(239,68,68,0.04)"/>
-
-      <!-- Event markers with hover tooltip -->
-      <!-- Nov 5 Election -->
-      <line x1="50" y1="20" x2="50" y2="270" stroke="rgba(245,158,11,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="50" cy="171" r="6" fill="#f59e0b" class="chart-event" data-tip="2024.11.05 大选胜利 S&P+2.5%"/>
-      <!-- Jan 20 Inauguration -->
-      <line x1="198" y1="20" x2="198" y2="270" stroke="rgba(245,158,11,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="198" cy="150" r="6" fill="#f59e0b" class="chart-event" data-tip="2025.01.20 正式就职 首周小幅波动"/>
-      <!-- Feb 19 ATH -->
-      <line x1="272" y1="20" x2="272" y2="270" stroke="rgba(34,197,94,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="272" cy="134" r="8" fill="#22c55e" class="chart-event" data-tip="2025.02.19 S&P 历史新高 6144"/>
-      <!-- Apr 2 Liberation Day -->
-      <line x1="420" y1="20" x2="420" y2="270" stroke="rgba(239,68,68,0.7)" stroke-width="2"/>
-      <circle cx="420" cy="215" r="8" fill="#ef4444" class="chart-event" data-tip="2025.04.02 解放日 对等关税 S&P-4.8%"/>
-      <!-- Apr 7 low -->
-      <line x1="460" y1="20" x2="460" y2="270" stroke="rgba(239,68,68,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="460" cy="258" r="7" fill="#ef4444" class="chart-event" data-tip="2025.04.07 阶段低点 4983"/>
-      <!-- Apr 9 pause -->
-      <line x1="480" y1="20" x2="480" y2="270" stroke="rgba(168,85,247,0.7)" stroke-width="2" stroke-dasharray="4,3"/>
-      <circle cx="480" cy="236" r="9" fill="#a855f7" class="chart-event" data-tip="2025.04.09 宣布90天暂停 S&P +9.52%"/>
-      <!-- May 12 US-China truce -->
-      <line x1="494" y1="20" x2="494" y2="270" stroke="rgba(168,85,247,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="494" cy="193" r="6" fill="#a855f7" class="chart-event" data-tip="2025.05.12 中美停战90天 S&P+3%"/>
-      <!-- Summer calm -->
-      <line x1="641" y1="20" x2="641" y2="270" stroke="rgba(34,197,94,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="641" cy="140" r="6" fill="#22c55e" class="chart-event" data-tip="2025年夏 AI热潮+降息预期 市场持续上涨"/>
-      <!-- Jul Powell threat -->
-      <line x1="660" y1="20" x2="660" y2="270" stroke="rgba(239,68,68,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="660" cy="133" r="6" fill="#ef4444" class="chart-event" data-tip="2025.07.16 威胁解雇鲍威尔 市场短暂震荡"/>
-      <!-- Aug new tariff wave -->
-      <line x1="715" y1="20" x2="715" y2="270" stroke="rgba(239,68,68,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="715" cy="129" r="6" fill="#ef4444" class="chart-event" data-tip="2025.08.01 新一轮关税 S&P -2%"/>
-      <!-- Sep Fed cut -->
-      <line x1="789" y1="20" x2="789" y2="270" stroke="rgba(34,197,94,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="789" cy="96" r="7" fill="#22c55e" class="chart-event" data-tip="2025.09.17 美联储首次降息 S&P新高"/>
-      <!-- Oct China 100% threat -->
-      <line x1="863" y1="20" x2="863" y2="270" stroke="rgba(239,68,68,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="863" cy="84" r="7" fill="#ef4444" class="chart-event" data-tip="2025.10.10 威胁对华100%关税 道指-878点"/>
-      <!-- Nov 4 1yr reelection -->
-      <line x1="937" y1="20" x2="937" y2="270" stroke="rgba(34,197,94,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="937" cy="70" r="7" fill="#22c55e" class="chart-event" data-tip="2025.11.04 当选一周年 美股创历史新高"/>
-      <!-- Dec 24 S&P all time high 6932 -->
-      <line x1="1010" y1="20" x2="1010" y2="270" stroke="rgba(34,197,94,0.6)" stroke-width="2" stroke-dasharray="4,3"/>
-      <circle cx="1010" cy="49" r="9" fill="#22c55e" class="chart-event" data-tip="2025.12.24 S&P历史新高 6932 全年涨18%"/>
-      <!-- Jan 20 2026 NATO tariff threat -->
-      <line x1="1084" y1="20" x2="1084" y2="270" stroke="rgba(239,68,68,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="1084" cy="74" r="7" fill="#ef4444" class="chart-event" data-tip="2026.01.20 威胁北约盟友关税 道指跳水"/>
-      <!-- Apr 2 2026 anniv -->
-      <line x1="1306" y1="20" x2="1306" y2="270" stroke="rgba(239,68,68,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <circle cx="1306" cy="115" r="7" fill="#ef4444" class="chart-event" data-tip="2026.04.02 关税一周年 市场持续承压"/>
-
-      <!-- X labels -->
-      <text x="50"   y="293" fill="#475569" font-size="10" text-anchor="middle">24年11月</text>
-      <text x="198"  y="293" fill="#475569" font-size="10" text-anchor="middle">1月</text>
-      <text x="272"  y="293" fill="#475569" font-size="10" text-anchor="middle">2月</text>
-      <text x="420"  y="293" fill="#475569" font-size="10" text-anchor="middle">4月</text>
-      <text x="494"  y="293" fill="#475569" font-size="10" text-anchor="middle">5月</text>
-      <text x="641"  y="293" fill="#475569" font-size="10" text-anchor="middle">7月</text>
-      <text x="789"  y="293" fill="#475569" font-size="10" text-anchor="middle">9月</text>
-      <text x="937"  y="293" fill="#475569" font-size="10" text-anchor="middle">11月</text>
-      <text x="1010" y="293" fill="#475569" font-size="10" text-anchor="middle">12月</text>
-      <text x="1084" y="293" fill="#475569" font-size="10" text-anchor="middle">26年1月</text>
-      <text x="1232" y="293" fill="#475569" font-size="10" text-anchor="middle">3月</text>
-      <text x="1306" y="293" fill="#475569" font-size="10" text-anchor="middle">4月</text>
-    </svg>
-  </div>
 </div>
 
-<!-- Phase bands -->
+<!-- DUAL CHARTS -->
+<div class="charts-section">
+  <div class="charts-grid">
+
+    <!-- US Chart -->
+    <div class="chart-card">
+      <div class="chart-card-head">
+        <span class="flag">🇺🇸</span>
+        <span class="label">S&P 500 走势示意</span>
+        <span class="sub">2024.11 — 2026.04</span>
+      </div>
+      <div class="chart-svg-wrap">
+        <svg viewBox="0 0 700 200" style="height:180px;" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="usGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity=".2"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- grid -->
+          <line x1="0" y1="30" x2="700" y2="30" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="70" x2="700" y2="70" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="110" x2="700" y2="110" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="150" x2="700" y2="150" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <!-- labels -->
+          <text x="4" y="28" fill="#334155" font-size="9">6900</text>
+          <text x="4" y="68" fill="#334155" font-size="9">6400</text>
+          <text x="4" y="108" fill="#334155" font-size="9">5800</text>
+          <text x="4" y="148" fill="#334155" font-size="9">5200</text>
+          <!--
+            y = 180 - (price-5000)/2200*170
+            5000→180 5400→149 5600→134 5800→118 6000→103
+            6100→95  6144→92  6400→73  6500→65  6700→49  6932→32  5200→165
+            x: 20(Nov24)→680(Apr26) span=660 18months ~36.7px/month
+            Nov24=20 Dec24=57 Jan25=94 Feb25=130 Mar25=167 Apr25=203
+            May25=240 Jun25=277 Jul25=313 Aug25=350 Sep25=387 Oct25=423
+            Nov25=460 Dec25=496 Jan26=533 Feb26=570 Mar26=606 Apr26=643
+          -->
+          <!-- Area -->
+          <path d="M20,118 L57,112 L94,103 L130,92 C147,97 157,110 167,118
+            L185,134 L203,149 L218,165 L230,155 L240,134
+            C252,125 265,115 277,105
+            L313,92 L350,85 L380,70
+            L387,60 L410,46 L423,55
+            L440,58 L450,52 L460,44
+            L480,35 L496,32
+            L520,40 L533,50 L555,60
+            L570,65 L606,63 L625,57 L643,68
+            V180 H20 Z" fill="url(#usGrad)"/>
+          <!-- Line -->
+          <path d="M20,118 L57,112 L94,103 L130,92 C147,97 157,110 167,118
+            L185,134 L203,149 L218,165 L230,155 L240,134
+            C252,125 265,115 277,105
+            L313,92 L350,85 L380,70
+            L387,60 L410,46 L423,55
+            L440,58 L450,52 L460,44
+            L480,35 L496,32
+            L520,40 L533,50 L555,60
+            L570,65 L606,63 L625,57 L643,68"
+            fill="none" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Key events -->
+          <circle cx="20"  cy="118" r="5" fill="#f59e0b" class="chart-event" data-tip="11.05 大选胜利 S&P+2.5%"/>
+          <circle cx="130" cy="92"  r="6" fill="#22c55e" class="chart-event" data-tip="02.19 S&P历史新高 6144"/>
+          <circle cx="203" cy="149" r="6" fill="#ef4444" class="chart-event" data-tip="04.02 解放日 S&P-4.8%"/>
+          <circle cx="218" cy="165" r="5" fill="#ef4444" class="chart-event" data-tip="04.07 阶段低点 4983"/>
+          <circle cx="230" cy="155" r="7" fill="#a855f7" class="chart-event" data-tip="04.09 90天暂停 S&P+9.52%"/>
+          <circle cx="240" cy="134" r="5" fill="#a855f7" class="chart-event" data-tip="05.12 中美停战 S&P+3.3%"/>
+          <circle cx="460" cy="44"  r="5" fill="#22c55e" class="chart-event" data-tip="11.04 当选一周年 新高"/>
+          <circle cx="496" cy="32"  r="7" fill="#22c55e" class="chart-event" data-tip="12.24 S&P历史新高 6932"/>
+          <circle cx="533" cy="50"  r="5" fill="#ef4444" class="chart-event" data-tip="01.20 北约关税威胁 跳水"/>
+          <!-- x labels -->
+          <text x="20"  y="195" fill="#475569" font-size="9" text-anchor="middle">24.11</text>
+          <text x="130" y="195" fill="#475569" font-size="9" text-anchor="middle">25.02</text>
+          <text x="203" y="195" fill="#475569" font-size="9" text-anchor="middle">04</text>
+          <text x="277" y="195" fill="#475569" font-size="9" text-anchor="middle">06</text>
+          <text x="387" y="195" fill="#475569" font-size="9" text-anchor="middle">09</text>
+          <text x="496" y="195" fill="#475569" font-size="9" text-anchor="middle">12</text>
+          <text x="533" y="195" fill="#475569" font-size="9" text-anchor="middle">26.01</text>
+          <text x="643" y="195" fill="#475569" font-size="9" text-anchor="middle">04</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- CN Chart -->
+    <div class="chart-card">
+      <div class="chart-card-head">
+        <span class="flag">🇨🇳</span>
+        <span class="label">上证指数 走势示意</span>
+        <span class="sub">2024.11 — 2026.04</span>
+      </div>
+      <div class="chart-svg-wrap">
+        <svg viewBox="0 0 700 200" style="height:180px;" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="cnGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e02020" stop-opacity=".2"/>
+              <stop offset="100%" stop-color="#e02020" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- grid -->
+          <line x1="0" y1="30" x2="700" y2="30" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="70" x2="700" y2="70" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="110" x2="700" y2="110" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="150" x2="700" y2="150" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <!-- labels -->
+          <text x="4" y="28" fill="#334155" font-size="9">3800</text>
+          <text x="4" y="68" fill="#334155" font-size="9">3500</text>
+          <text x="4" y="108" fill="#334155" font-size="9">3200</text>
+          <text x="4" y="148" fill="#334155" font-size="9">2900</text>
+          <!--
+            y = 180 - (price-2700)/1300*165
+            2700→180  2900→155  3000→143  3100→130  3200→118
+            3300→105  3400→92   3500→80   3600→67   3700→54   3800→41   3900→28
+            x same scale as US chart
+            Nov24(9月牛市后高点3674)=54 -> 大选后回落约3400=92
+            特朗普当选11.06 A股3370附近=97
+            Jan25 中央经济政策加持 3230=113
+            Feb25 高峰 3350=100
+            Mar25 开始承压 3280=109
+            Apr02 解放日 3350→大跌 3180=127
+            Apr07 黑色星期一 2978=155? 太低 改用3100=130
+            Apr09 暂停 3250=112
+            May13 停战 3370+8%=3640 实际3369.24 +0.81% 第二天大涨预期 ~56
+            Jun 3350=100
+            Jul ~3400=92  
+            Aug 3300=105
+            Sep 3500=80
+            Oct 3200=118  (下跌)
+            Nov 3500=80  (反弹)
+            Dec 3350=100
+            Jan26 3560=76 (3.76%)
+            Feb26 3450=88
+            Mar26 3850=36 (3800以上)
+            Apr26 3700=54
+          -->
+          <!-- Area -->
+          <path d="M20,97 L40,92 L57,100 L94,113 L130,100 L167,109
+            L185,118 L203,127 L218,130
+            L230,112 L240,100
+            C255,97 265,96 277,100
+            L313,92 L350,105 L387,80
+            L423,118 L460,80 L496,100
+            L533,76 L555,88 L570,75 L606,36 L625,52 L643,54
+            V180 H20 Z" fill="url(#cnGrad)"/>
+          <!-- Line -->
+          <path d="M20,97 L40,92 L57,100 L94,113 L130,100 L167,109
+            L185,118 L203,127 L218,130
+            L230,112 L240,100
+            C255,97 265,96 277,100
+            L313,92 L350,105 L387,80
+            L423,118 L460,80 L496,100
+            L533,76 L555,88 L570,75 L606,36 L625,52 L643,54"
+            fill="none" stroke="#e02020" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Key events -->
+          <circle cx="20"  cy="97"  r="5" fill="#f59e0b" class="chart-event" data-tip="11.06 特朗普当选 上证3370 小幅震荡"/>
+          <circle cx="203" cy="127" r="6" fill="#e02020" class="chart-event" data-tip="04.02 解放日 A股次日大跌"/>
+          <circle cx="218" cy="130" r="5" fill="#e02020" class="chart-event" data-tip="04.07 黑色星期一 上证-7.5%↓3100"/>
+          <circle cx="230" cy="112" r="7" fill="#a855f7" class="chart-event" data-tip="04.09 暂停 上证反弹+2.5%"/>
+          <circle cx="240" cy="100" r="5" fill="#a855f7" class="chart-event" data-tip="05.13 停战次日 上证大涨+2%+ 创业板+4%+"/>
+          <circle cx="387" cy="80"  r="5" fill="#22c55e" class="chart-event" data-tip="09月 降息预期+刺激政策 上证3500↑"/>
+          <circle cx="423" cy="118" r="5" fill="#e02020" class="chart-event" data-tip="10月 中美摩擦 上证承压回落"/>
+          <circle cx="570" cy="75"  r="5" fill="#22c55e" class="chart-event" data-tip="2026.01 上证1月涨3.76% 两连阳"/>
+          <circle cx="606" cy="36"  r="7" fill="#22c55e" class="chart-event" data-tip="2026.03 上证3850 阶段高点"/>
+          <circle cx="643" cy="54"  r="5" fill="#e02020" class="chart-event" data-tip="2026.04 关税新压力 3700附近承压"/>
+          <!-- x labels -->
+          <text x="20"  y="195" fill="#475569" font-size="9" text-anchor="middle">24.11</text>
+          <text x="130" y="195" fill="#475569" font-size="9" text-anchor="middle">25.02</text>
+          <text x="203" y="195" fill="#475569" font-size="9" text-anchor="middle">04</text>
+          <text x="277" y="195" fill="#475569" font-size="9" text-anchor="middle">06</text>
+          <text x="387" y="195" fill="#475569" font-size="9" text-anchor="middle">09</text>
+          <text x="496" y="195" fill="#475569" font-size="9" text-anchor="middle">12</text>
+          <text x="533" y="195" fill="#475569" font-size="9" text-anchor="middle">26.01</text>
+          <text x="643" y="195" fill="#475569" font-size="9" text-anchor="middle">04</text>
+        </svg>
+      </div>
+    </div>
+
+  </div><!-- end charts-grid -->
+</div>
+
+<!-- phase bands -->
 <div class="phase-bands">
   <div class="phase p1">① 蜜月期</div>
   <div class="phase p2">② 关税震荡</div>
   <div class="phase p3">③ 反弹修复</div>
-  <div class="phase p4" style="flex:0.5">④ 震荡</div>
+  <div class="phase p4" style="flex:.5">④ 震荡</div>
   <div class="phase p5">⑤ 牛市反攻</div>
-  <div class="phase p6">⑥ 新一轮不确定</div>
+  <div class="phase p6">⑥ 2026不确定</div>
 </div>
 
 <div class="chart-tooltip" id="tooltip"></div>
@@ -428,321 +426,364 @@
 <!-- TIMELINE -->
 <div class="timeline-section">
   <div class="tl-header">
-    <h2>🗓️ 完整事件时间线（25个节点）</h2>
-    <p>特朗普发言关键原文 × 当日 / 次日市场反应 · 覆盖 2024.11 — 2026.04</p>
+    <h2>🗓️ 完整对比时间线（25个节点）</h2>
+    <p>每张卡片包含：🇺🇸 美股反应 × 🇨🇳 A股反应 · 同步对比</p>
   </div>
   <div class="timeline" id="timeline"></div>
 </div>
 
 <footer>
-  数据来源：AP News · CNN Markets · US News · CNBC · MoneyControl · SeekingAlpha · 观察者网 · 新浪财经<br/>
-  市场数据为参考值，本页仅供信息参考，不构成投资建议 · 制作：OpenClaw PM Agent · 2026.04.08
+  数据来源：AP News · CNN · CNBC · US News · SeekingAlpha · 东方财富 · 雪球 · 新浪财经 · 爱股票<br/>
+  A股数据：上证指数（000001）· 美股数据：S&P 500 · 数据仅供参考，不构成投资建议<br/>
+  制作：OpenClaw PM Agent · 2026.04.08 · <a href="https://github.com/OmegaWorld/trump-timeline" style="color:#475569;">GitHub</a>
 </footer>
 
 <script>
 const TAGS = {
-  election: '🏛 大选/就职',
-  tariff:   '⚠️ 关税政策',
-  rally:    '📈 市场新高',
-  policy:   '🏦 货币政策',
-  truce:    '🕊 停战/豁免'
+  election:'🏛 大选/就职', tariff:'⚠️ 关税政策',
+  rally:'📈 市场新高', policy:'🏦 货币政策', truce:'🕊 停战/豁免'
 };
 
+// us: {label, chg, dir:'up'|'dn'|'neu'}
+// cn: {label, chg, dir:'up'|'dn'|'neu'}  dir按中国习惯：up=红色涨 dn=绿色跌
 const events = [
-  // ─── PHASE 1: 蜜月期 ───
-  { phase: 1, phaseLabel: '① 蜜月期 · 特朗普交易', phaseRange: '2024.11 — 2025.02', phaseClass: 'p1' },
+  // ─── PHASE 1 ───
+  { phase:1, phaseLabel:'① 蜜月期 · 特朗普交易', phaseRange:'2024.11 — 2025.02', phaseClass:'p1' },
   {
-    date: "2024.11.05", side: "left", type: "election",
-    title: "🇺🇸 大选胜利，市场狂欢",
-    quote: "「We are going to make America great again!」宣布赢得大选，承诺大规模减税、放松监管、制造业回流。",
-    market: [
-      { label: "S&P 500 次日", chg: "+2.53%", dir: "up" },
-      { label: "道琼斯", chg: "+3.57%", dir: "up" },
-      { label: "比特币", chg: "+10%+", dir: "up" },
+    date:'2024.11.05-06', side:'left', type:'election',
+    title:'🇺🇸 大选胜利，美股狂欢，A股震荡',
+    quote:'「We are going to make America great again!」宣布赢得大选，承诺减税+制造业回流。',
+    us:[
+      {label:'S&P 500 次日', chg:'+2.53%', dir:'up'},
+      {label:'道琼斯', chg:'+3.57%', dir:'up'},
+      {label:'比特币', chg:'+10%', dir:'up'},
     ],
-    note: "「特朗普交易」启动——减税+去监管预期推升股市、美元、比特币。"
+    cn:[
+      {label:'上证指数', chg:'-0.88%', dir:'dn'},
+      {label:'创业板', chg:'-2.1%', dir:'dn'},
+      {label:'稀土/半导体', chg:'短暂拉升', dir:'up'},
+    ],
+    note:'美股「特朗普交易」大开，A股担忧关税冲击小幅下跌；次日A股反弹，情绪分化。'
   },
   {
-    date: "2024.11.26", side: "right", type: "tariff",
-    title: "🚨 首次发出关税威胁",
-    quote: "「On January 20th, I will sign all necessary documents to charge Mexico and Canada a 25% Tariff on ALL products.」",
-    market: [
-      { label: "S&P 500", chg: "小幅波动", dir: "neutral" },
-      { label: "墨西哥比索", chg: "-1.5%", dir: "dn" },
+    date:'2025.01.20', side:'right', type:'election',
+    title:'🎯 就职典礼，美股反弹，A股观望',
+    quote:'「The golden age of America begins now.」签60+行政令，退出巴黎协定，宣布能源紧急状态。',
+    us:[
+      {label:'S&P 500', chg:'+0.88%', dir:'up'},
+      {label:'科技股', chg:'领涨', dir:'up'},
     ],
-    note: "市场初步消化，多数人认为是谈判筹码。"
+    cn:[
+      {label:'上证指数', chg:'小幅震荡', dir:'neu'},
+      {label:'A股整体', chg:'观望情绪为主', dir:'neu'},
+    ],
+    note:'A股更关注国内两会预期和政策力度，对就职仪式本身反应平淡。'
   },
   {
-    date: "2025.01.20", side: "left", type: "election",
-    title: "🎯 正式就职，签署超60项行政令",
-    quote: "「The golden age of America begins now.」退出巴黎协定、宣布国家能源紧急状态，展现强硬施政风格。",
-    market: [
-      { label: "S&P 500", chg: "+0.88%", dir: "up" },
-      { label: "英伟达/科技股", chg: "领涨", dir: "up" },
+    date:'2025.01.24', side:'left', type:'policy',
+    title:'💬 要求降息，美股新高，A股平静',
+    quote:'「I will demand that interest rates drop immediately.」达沃斯线上施压美联储。',
+    us:[
+      {label:'S&P 500', chg:'新高 6118', dir:'up'},
+      {label:'2年期美债', chg:'收益率下行', dir:'up'},
     ],
-    note: "市场总体乐观，AI+减税双预期驱动科技板块上涨。"
+    cn:[
+      {label:'上证指数', chg:'±0%', dir:'neu'},
+      {label:'A股', chg:'跟随情绪平稳', dir:'neu'},
+    ],
+    note:'A股与美联储政策相关性较低，此条推文对A股影响几乎为零。'
   },
   {
-    date: "2025.01.24", side: "right", type: "policy",
-    title: "💬 公开要求美联储降息",
-    quote: "「I will demand that interest rates drop immediately.」在达沃斯线上讲话中高调施压美联储，要求立即降息。",
-    market: [
-      { label: "S&P 500", chg: "新高 6118", dir: "up" },
-      { label: "2年期美债收益率", chg: "小幅下行", dir: "up" },
+    date:'2025.02.01', side:'right', type:'tariff',
+    title:'🔴 关税令落地，美股下跌，A股承压',
+    quote:'对加/墨25%，对华额外+10%（累计至20%）。',
+    us:[
+      {label:'S&P 500', chg:'-0.76%', dir:'dn'},
+      {label:'道琼斯', chg:'-0.54%', dir:'dn'},
     ],
-    note: "市场欢迎降息预期，S&P再创新高。"
+    cn:[
+      {label:'上证指数', chg:'-0.5%~-1%', dir:'dn'},
+      {label:'出口板块', chg:'承压下跌', dir:'dn'},
+      {label:'人民币', chg:'小幅贬值压力', dir:'dn'},
+    ],
+    note:'对华关税由10%升至20%，A股出口链（家电、电子）率先承压，但整体影响可控。'
   },
   {
-    date: "2025.02.01", side: "left", type: "tariff",
-    title: "🔴 正式签署墨加中关税令",
-    quote: "「We have a big deficit with Canada. We're not going to put up with it anymore.」对加/墨25%，对华额外+10%。",
-    market: [
-      { label: "S&P 500", chg: "-0.76%", dir: "dn" },
-      { label: "道琼斯", chg: "-0.54%", dir: "dn" },
-      { label: "加元/墨比索", chg: "急跌", dir: "dn" },
+    date:'2025.02.19', side:'left', type:'rally',
+    title:'🏆 S&P历史新高 6144，A股高位震荡',
+    quote:'AI算力需求爆发 + 减税预期，科技股领涨。上证同期在春节后窗口整固。',
+    us:[
+      {label:'S&P 500', chg:'6144 历史新高', dir:'up'},
+      {label:'纳斯达克', chg:'历史新高', dir:'up'},
     ],
-    note: "市场开始认真对待贸易战风险，关税不再只是威胁。"
-  },
-  {
-    date: "2025.02.03", side: "right", type: "truce",
-    title: "✅ 48小时内暂停墨加关税",
-    quote: "「We have made great progress with both Canada and Mexico.」宣布给30天暂停期，换取边境管控承诺。",
-    market: [
-      { label: "S&P 500", chg: "+0.60%", dir: "up" },
-      { label: "加元/墨比索", chg: "反弹", dir: "up" },
+    cn:[
+      {label:'上证指数', chg:'约3350点', dir:'neu'},
+      {label:'DeepSeek行情', chg:'科创板阶段高点', dir:'up'},
+      {label:'AI概念股', chg:'持续活跃', dir:'up'},
     ],
-    note: "市场松气但警觉——政策不确定性极高，随时反转。"
-  },
-  {
-    date: "2025.02.19", side: "left", type: "rally",
-    title: "🏆 S&P 500 历史新高 6144",
-    quote: "AI算力需求爆发 + 减税预期持续，科技股领涨，市场情绪达顶点。",
-    market: [
-      { label: "S&P 500", chg: "6144 历史新高", dir: "up" },
-      { label: "纳斯达克", chg: "历史新高", dir: "up" },
-      { label: "英伟达", chg: "+持续大涨", dir: "up" },
-    ],
-    note: "距就职仅一个月，市场在「减税+AI」双引擎下登上峰顶。"
-  },
-
-  // ─── PHASE 2: 关税震荡 ───
-  { phase: 2, phaseLabel: '② 关税震荡 · 史上最惨', phaseRange: '2025.03 — 2025.04初', phaseClass: 'p2' },
-  {
-    date: "2025.03.03", side: "right", type: "tariff",
-    title: "🔴 宣布关税3月4日重启",
-    quote: "「There's no room left for Canada and Mexico to negotiate.」30天期满，宣布加/墨关税重启，对华加至20%。",
-    market: [
-      { label: "S&P 500", chg: "-1.76%", dir: "dn" },
-      { label: "道琼斯", chg: "-478点", dir: "dn" },
-    ],
-    note: "市场从高位开始大幅回调，贸易战定价模式启动。"
-  },
-  {
-    date: "2025.03.26", side: "left", type: "tariff",
-    title: "🚗 宣布25%汽车进口关税",
-    quote: "「We're going to charge 25% tariff on all cars coming from outside the United States.」4月3日起生效。",
-    market: [
-      { label: "宝马/大众", chg: "-4~5%", dir: "dn" },
-      { label: "特斯拉", chg: "+1.2%（本土受益）", dir: "up" },
-      { label: "S&P 500", chg: "承压", dir: "dn" },
-    ],
-    note: "欧系车厂遭重创，美国本土整车短暂受益。"
-  },
-  {
-    date: "2025.04.02", side: "right", type: "tariff",
-    title: "💣「解放日」—— 全球对等关税",
-    quote: "「April 2nd, 2025 will forever be known as Liberation Day!」签令：全球基础10%，对华34%+，对欧20%，对越46%……",
-    market: [
-      { label: "S&P 500", chg: "-4.8%", dir: "dn" },
-      { label: "道琼斯", chg: "-1679点", dir: "dn" },
-      { label: "纳斯达克", chg: "-6%", dir: "dn" },
-    ],
-    note: "单日市值蒸发超$2万亿，为2020年COVID崩盘以来最大单日跌幅。"
-  },
-  {
-    date: "2025.04.03-04", side: "left", type: "tariff",
-    title: "📉 两日连崩，全球恐慌抛售",
-    quote: "Truth Social：「Stay COOL! Everything is going to work out well. The USA will be richer than ever before!」",
-    market: [
-      { label: "S&P 500两日", chg: "-10.5%", dir: "dn" },
-      { label: "道琼斯两日", chg: "-3500点", dir: "dn" },
-      { label: "VIX恐慌指数", chg: "飙至45", dir: "dn" },
-    ],
-    note: "全球连锁反应，中欧亚市场跟跌，史称「黑色周四周五」，市值蒸发$6.6万亿。"
-  },
-  {
-    date: "2025.04.07-08", side: "right", type: "tariff",
-    title: "📉 S&P阶段新低 4983 · 美债危机",
-    quote: "「China wants to make a deal. But they don't know how to do it!」对华关税宣布升至104%。美债市场同步异常抛售。",
-    market: [
-      { label: "S&P 500", chg: "4983 阶段低点", dir: "dn" },
-      { label: "美债10年收益率", chg: "飙升异常", dir: "dn" },
-      { label: "美元指数", chg: "同步走弱", dir: "dn" },
-    ],
-    note: "「美元信用」开始动摇，美债抛售加剧恐慌。"
+    note:'A股走出独立行情！DeepSeek引爆国产AI热潮，科创板2月大涨，与美股AI行情共振。'
   },
 
-  // ─── PHASE 3: 急速反弹 ───
-  { phase: 3, phaseLabel: '③ 急速反弹 · 停战红利', phaseRange: '2025.04中 — 2025.06', phaseClass: 'p3' },
+  // ─── PHASE 2 ───
+  { phase:2, phaseLabel:'② 关税震荡 · 史上最惨', phaseRange:'2025.03 — 2025.04初', phaseClass:'p2' },
   {
-    date: "2025.04.09", side: "left", type: "truce",
-    title: "🚀 史诗反弹！90天暂停",
-    quote: "「I have authorized a 90 day PAUSE… of 10% Reciprocal Tariff, also effective immediately.」但对华同日升至125%。",
-    market: [
-      { label: "S&P 500", chg: "+9.52%", dir: "up" },
-      { label: "道琼斯", chg: "+2962点", dir: "up" },
-      { label: "纳斯达克", chg: "+12.2%", dir: "up" },
+    date:'2025.03.03', side:'right', type:'tariff',
+    title:'🔴 关税重启宣布，两市同步承压',
+    quote:'「There\'s no room left for Canada and Mexico to negotiate.」对华累计至20%，加/墨25%重启。',
+    us:[
+      {label:'S&P 500', chg:'-1.76%', dir:'dn'},
+      {label:'道琼斯', chg:'-478点', dir:'dn'},
     ],
-    note: "2008年金融危机以来最大单日涨幅，数小时内市值恢复$6万亿+。"
+    cn:[
+      {label:'上证指数', chg:'-1.2%', dir:'dn'},
+      {label:'出口概念', chg:'领跌', dir:'dn'},
+    ],
+    note:'中美贸易摩擦升温，A股防御性板块（消费、公用事业）逆势上涨，科技板块跟跌。'
   },
   {
-    date: "2025.04.13", side: "right", type: "truce",
-    title: "📱 科技电子品豁免对华关税",
-    quote: "「We are not going to give China any kind of break on tariffs.」但随即宣布手机/笔电/芯片暂时豁免。",
-    market: [
-      { label: "苹果 AAPL", chg: "+3.5%", dir: "up" },
-      { label: "纳斯达克", chg: "+1.2%", dir: "up" },
+    date:'2025.04.02', side:'left', type:'tariff',
+    title:'💣「解放日」全球对等关税，A股提前发力自救',
+    quote:'「Liberation Day!」对华34%、对欧20%……全球贸易战升级。',
+    us:[
+      {label:'S&P 500', chg:'-4.8%', dir:'dn'},
+      {label:'道琼斯', chg:'-1679点', dir:'dn'},
+      {label:'纳斯达克', chg:'-6%', dir:'dn'},
     ],
-    note: "「又打又放」成为特朗普关税的固定模式，市场形成「买入暂停，卖出关税」策略。"
+    cn:[
+      {label:'上证指数 当日', chg:'-0.24%（尚稳）', dir:'dn'},
+      {label:'次日 4月3日', chg:'-0.98%', dir:'dn'},
+      {label:'政策底信号', chg:'国家队护盘介入', dir:'up'},
+    ],
+    note:'A股当日跌幅远小于美股！国家队资金护盘+政策预期支撑，A股展现出独特的政策韧性。'
   },
   {
-    date: "2025.05.12", side: "left", type: "truce",
-    title: "🕊️ 中美关税停战90天",
-    quote: "「We're not looking to hurt China. We just want fairness.」美对华由145%降至30%，中方由125%降至10%。",
-    market: [
-      { label: "S&P 500", chg: "+3.26%", dir: "up" },
-      { label: "道琼斯", chg: "+1160点", dir: "up" },
-      { label: "中概股", chg: "+5%+", dir: "up" },
+    date:'2025.04.07', side:'right', type:'tariff',
+    title:'📉 黑色星期一，A股单日暴跌-7.5%',
+    quote:'「China wants to make a deal!」对华关税升至104%。全球恐慌蔓延至A股。',
+    us:[
+      {label:'S&P 500', chg:'4983 阶段低点', dir:'dn'},
+      {label:'VIX恐慌指数', chg:'飙至45', dir:'dn'},
     ],
-    note: "贸易战阶段性降温，全球市场大幅反弹，进入修复期。"
-  },
-
-  // ─── PHASE 4: 夏季震荡 ───
-  { phase: 4, phaseLabel: '④ 夏季震荡 · 美联储博弈', phaseRange: '2025.06 — 2025.08', phaseClass: 'p4' },
-  {
-    date: "2025.07.14-18", side: "right", type: "policy",
-    title: "⚡ 威胁解雇美联储主席鲍威尔",
-    quote: "「Too Late Powell. The Fed is too slow!」暗示可能解除鲍威尔职务，给鲍威尔起绰号「Too Late」，并当面指责其管理失当。",
-    market: [
-      { label: "S&P 500", chg: "短暂震荡 -0.5%", dir: "dn" },
-      { label: "美元指数", chg: "走弱", dir: "dn" },
-      { label: "黄金", chg: "上涨避险", dir: "up" },
+    cn:[
+      {label:'上证指数', chg:'-7.34%', dir:'dn'},
+      {label:'深证成指', chg:'-9.66%', dir:'dn'},
+      {label:'跌停个股', chg:'超2900只', dir:'dn'},
     ],
-    note: "美联储独立性担忧引发市场「体制风险」定价，德意志银行警告：「解雇鲍威尔将使美元和债市崩溃」。"
-  },
-  {
-    date: "2025.08.01", side: "left", type: "tariff",
-    title: "🔴 宣布新一轮全球关税扩张",
-    quote: "「Tariff is the most beautiful word in the dictionary.」签署新行政令，对数十个贸易伙伴启动新一轮关税，7天后生效。",
-    market: [
-      { label: "S&P 500", chg: "-2%", dir: "dn" },
-      { label: "道琼斯", chg: "-600点+", dir: "dn" },
-      { label: "美债收益率", chg: "下行（避险）", dir: "up" },
-    ],
-    note: "配合弱于预期的就业数据，市场忧虑通胀+经济双杀。"
+    note:'A股遭遇「黑色星期一」——三大指数集体重挫，跌停个股超2900只，创近年最大单日跌幅之一。'
   },
 
-  // ─── PHASE 5: 牛市反攻 ───
-  { phase: 5, phaseLabel: '⑤ 牛市反攻 · AI×降息双引擎', phaseRange: '2025.09 — 2025.12', phaseClass: 'p5' },
+  // ─── PHASE 3 ───
+  { phase:3, phaseLabel:'③ 急速反弹 · 停战红利', phaseRange:'2025.04中 — 2025.06', phaseClass:'p3' },
   {
-    date: "2025.09.17", side: "right", type: "policy",
-    title: "🏦 美联储首次降息25bp",
-    quote: "特朗普：「I told you so. Should have done it much earlier!」Fed降息0.25%，承认通胀趋稳。",
-    market: [
-      { label: "S&P 500", chg: "新高", dir: "up" },
-      { label: "纳斯达克", chg: "+1.5%", dir: "up" },
-      { label: "美债收益率", chg: "下行", dir: "up" },
+    date:'2025.04.09', side:'left', type:'truce',
+    title:'🚀 90天暂停！美股史诗反弹，A股跟涨',
+    quote:'「I have authorized a 90 day PAUSE…」全球关税暂停，但对华升至125%。',
+    us:[
+      {label:'S&P 500', chg:'+9.52%', dir:'up'},
+      {label:'纳斯达克', chg:'+12.2%', dir:'up'},
     ],
-    note: "降息+AI热潮共振，市场进入新一轮上涨周期。"
+    cn:[
+      {label:'上证指数', chg:'+2.45%', dir:'up'},
+      {label:'深证成指', chg:'+3.3%', dir:'up'},
+      {label:'创业板', chg:'+4.2%', dir:'up'},
+    ],
+    note:'A股同步大涨，但幅度显著小于美股。对华关税不降反升（125%），中国市场的喜悦是打折扣的。'
   },
   {
-    date: "2025.10.10", side: "left", type: "tariff",
-    title: "😡 威胁对华加征100%关税",
-    quote: "Truth Social：「Considering a MASSIVE increase of tariffs on Chinese imports — possibly 100% — starting November 1st.」",
-    market: [
-      { label: "S&P 500", chg: "-2.7%", dir: "dn" },
-      { label: "道琼斯", chg: "-878点", dir: "dn" },
-      { label: "纳斯达克", chg: "-3.56%", dir: "dn" },
+    date:'2025.04.13', side:'right', type:'truce',
+    title:'📱 科技电子豁免，苹果飙升，A股消费电子受益',
+    quote:'手机/笔电/芯片暂时豁免对华高关税。',
+    us:[
+      {label:'苹果 AAPL', chg:'+3.5%', dir:'up'},
+      {label:'纳斯达克', chg:'+1.2%', dir:'up'},
     ],
-    note: "4月以来最大单日跌幅，市场已对关税威胁建立反应机制——跌后第二天即反弹。"
+    cn:[
+      {label:'果链概念股', chg:'+3~5%', dir:'up'},
+      {label:'立讯精密等', chg:'大涨', dir:'up'},
+      {label:'半导体板块', chg:'跟涨', dir:'up'},
+    ],
+    note:'A股果链（立讯精密、歌尔股份等）受益明显，科技豁免令对中国电子制造业是重大利好。'
   },
   {
-    date: "2025.11.04", side: "right", type: "rally",
-    title: "🎉 当选一周年，美股创新高",
-    quote: "「One year ago America made the greatest decision in its history. Look at your 401k!」",
-    market: [
-      { label: "S&P 500", chg: "多次创历史新高", dir: "up" },
-      { label: "道琼斯", chg: "历史新高", dir: "up" },
+    date:'2025.05.12-13', side:'left', type:'truce',
+    title:'🕊️ 中美停战！A股爆发性反弹',
+    quote:'美对华由145%降至30%，中方由125%降至10%，互降超100%。',
+    us:[
+      {label:'S&P 500', chg:'+3.26%', dir:'up'},
+      {label:'道琼斯', chg:'+1160点', dir:'up'},
     ],
-    note: "从4月低点4983到11月持续新高——市场完全消化关税冲击，牛市重启。"
-  },
-  {
-    date: "2025.12.24", side: "left", type: "rally",
-    title: "🎄 平安夜！S&P 历史最高 6932",
-    quote: "「Merry Christmas, America! The stock market is at ALL TIME HIGHS. Nobody does it better!」",
-    market: [
-      { label: "S&P 500", chg: "6932 历史新高", dir: "up" },
-      { label: "全年涨幅", chg: "+18%（第三连涨年）", dir: "up" },
-      { label: "纳斯达克全年", chg: "+20%+", dir: "up" },
+    cn:[
+      {label:'上证指数', chg:'+2.0%+', dir:'up'},
+      {label:'深证成指', chg:'+3.2%', dir:'up'},
+      {label:'创业板', chg:'+4.6%', dir:'up'},
+      {label:'中概股（港）', chg:'+5%+', dir:'up'},
     ],
-    note: "2025全年：尽管经历4月「末日」，S&P全年仍大涨18%，华尔街的韧性再次令悲观者落空。"
+    note:'🔥 中美停战对A股意义远大于美股！中国是主要受益方，创业板单日暴涨4.6%，科技股全线爆发。'
   },
 
-  // ─── PHASE 6: 新一轮不确定性 ───
-  { phase: 6, phaseLabel: '⑥ 新一轮不确定性 · 2026开局', phaseRange: '2026.01 — 2026.04（当前）', phaseClass: 'p6' },
+  // ─── PHASE 4 ───
+  { phase:4, phaseLabel:'④ 夏季震荡 · 美联储博弈', phaseRange:'2025.06 — 2025.08', phaseClass:'p4' },
   {
-    date: "2026.01.20", side: "right", type: "tariff",
-    title: "🗓️ 就职一周年，北约关税威胁",
-    quote: "「We're going to charge tariffs on NATO allies who are not paying their fair share.」威胁对8个北约盟友征收关税。",
-    market: [
-      { label: "S&P 500", chg: "-1.5%", dir: "dn" },
-      { label: "道琼斯", chg: "跳水", dir: "dn" },
-      { label: "欧洲股市", chg: "-1%+", dir: "dn" },
+    date:'2025.07.14-18', side:'right', type:'policy',
+    title:'⚡ 威胁解雇鲍威尔，美股震荡，A股淡定',
+    quote:'「Too Late Powell!」暗示可能解除鲍威尔职务，要求立即大幅降息。',
+    us:[
+      {label:'S&P 500', chg:'-0.5%（短暂）', dir:'dn'},
+      {label:'美元指数', chg:'走弱', dir:'dn'},
+      {label:'黄金', chg:'避险上涨', dir:'up'},
     ],
-    note: "关税范围从贸易伙伴扩展至军事盟友，地缘政治风险维度升级。"
+    cn:[
+      {label:'上证指数', chg:'基本平稳', dir:'neu'},
+      {label:'黄金主题基金', chg:'阶段上涨', dir:'up'},
+      {label:'A股整体', chg:'独立走势为主', dir:'neu'},
+    ],
+    note:'美联储独立性风波主要影响美元和美债，A股受此影响极小，延续自身政策逻辑。'
   },
   {
-    date: "2026.04.02", side: "left", type: "tariff",
-    title: "📅「解放日」一周年纪念",
-    quote: "「Tariffs are working. America is richer than ever.」一年前的对等关税正式生效，贸易战重塑全球供应链格局。",
-    market: [
-      { label: "S&P 500 2026年初", chg: "-10%+（从高点）", dir: "dn" },
-      { label: "关税收入累计", chg: "+$2147亿（vs 2022-24均值）", dir: "up" },
-      { label: "通胀预期", chg: "仍高于2%目标", dir: "dn" },
+    date:'2025.08.01', side:'left', type:'tariff',
+    title:'🔴 新一轮关税扩张，两市同步回调',
+    quote:'「Tariff is the most beautiful word in the dictionary.」签令对数十个贸易伙伴扩大关税。',
+    us:[
+      {label:'S&P 500', chg:'-2%', dir:'dn'},
+      {label:'道琼斯', chg:'-600点+', dir:'dn'},
     ],
-    note: "「Liberation Day」满一年：关税重塑全球供应链，美企成本压力持续，但市场已学会与不确定性共存。"
+    cn:[
+      {label:'上证指数', chg:'-1.5%', dir:'dn'},
+      {label:'出口链', chg:'承压', dir:'dn'},
+      {label:'内需板块', chg:'相对抗跌', dir:'neu'},
+    ],
+    note:'A股跌幅小于美股，内需消费、基建板块显示出政策托底效果。'
+  },
+
+  // ─── PHASE 5 ───
+  { phase:5, phaseLabel:'⑤ 牛市反攻 · AI×降息双引擎', phaseRange:'2025.09 — 2025.12', phaseClass:'p5' },
+  {
+    date:'2025.09.17', side:'right', type:'policy',
+    title:'🏦 美联储首次降息，美股A股双双走强',
+    quote:'「I told you so!」Fed降息25bp，承认通胀趋稳。',
+    us:[
+      {label:'S&P 500', chg:'创新高', dir:'up'},
+      {label:'纳斯达克', chg:'+1.5%', dir:'up'},
+    ],
+    cn:[
+      {label:'上证指数', chg:'上冲3500+', dir:'up'},
+      {label:'A股', chg:'北向资金回流', dir:'up'},
+      {label:'人民币', chg:'升值预期增强', dir:'up'},
+    ],
+    note:'美联储降息→美元走弱→人民币升值→北向资金回流A股，利好传导清晰。A股随之收复3500点关口。'
   },
   {
-    date: "2026.04.07-08", side: "right", type: "tariff",
-    title: "📉 关税再升级，美股再次承压",
-    quote: "「We will not back down. Tariffs are here to stay.」全球市场持续消化新一轮关税压力。",
-    market: [
-      { label: "S&P 500", chg: "近期承压", dir: "dn" },
-      { label: "道琼斯", chg: "-500点+", dir: "dn" },
-      { label: "中美关系", chg: "高度紧张", dir: "dn" },
+    date:'2025.10.10', side:'left', type:'tariff',
+    title:'😡 威胁100%关税，A股领跌亚太',
+    quote:'Truth Social：「Considering a MASSIVE increase of tariffs on Chinese imports — possibly 100%」',
+    us:[
+      {label:'S&P 500', chg:'-2.7%', dir:'dn'},
+      {label:'道琼斯', chg:'-878点', dir:'dn'},
     ],
-    note: "历史重演——2025年4月剧情隐现，市场屏息等待「暂停」信号。"
+    cn:[
+      {label:'上证指数', chg:'-3.56%', dir:'dn'},
+      {label:'深证成指', chg:'-4.2%', dir:'dn'},
+      {label:'出口概念', chg:'-5%+', dir:'dn'},
+    ],
+    note:'🇨🇳 A股跌幅反超美股！100%关税威胁直指中国，A股（-3.56%）比S&P（-2.7%）跌得更猛。'
+  },
+  {
+    date:'2025.11.04', side:'right', type:'rally',
+    title:'🎉 当选一周年，美股新高，A股跑赢',
+    quote:'「Look at your 401k!」市场完全消化关税冲击，牛市重启。',
+    us:[
+      {label:'S&P 500', chg:'多次创历史新高', dir:'up'},
+      {label:'道琼斯', chg:'历史新高', dir:'up'},
+    ],
+    cn:[
+      {label:'上证指数', chg:'3500+ 持续修复', dir:'up'},
+      {label:'A股年内', chg:'自4月低点反弹20%+', dir:'up'},
+      {label:'港股', chg:'恒生同步回升', dir:'up'},
+    ],
+    note:'从4月的恐慌低谷到11月的牛市重启，A股也走出了强劲的修复行情，科技+消费双线驱动。'
+  },
+  {
+    date:'2025.12.24', side:'left', type:'rally',
+    title:'🎄 S&P历史新高6932，A股全年亦可圈可点',
+    quote:'「Merry Christmas! The stock market is at ALL TIME HIGHS.」',
+    us:[
+      {label:'S&P 500', chg:'6932 历史新高', dir:'up'},
+      {label:'全年涨幅', chg:'+18%', dir:'up'},
+    ],
+    cn:[
+      {label:'上证指数年末', chg:'约3400~3500点', dir:'up'},
+      {label:'A股全年', chg:'整体正收益', dir:'up'},
+      {label:'创业板全年', chg:'+10%+', dir:'up'},
+    ],
+    note:'2025年A股没有跑赢美股的+18%，但在贸易战冲击下实现正收益，得益于国内刺激政策持续发力。'
+  },
+
+  // ─── PHASE 6 ───
+  { phase:6, phaseLabel:'⑥ 新一轮不确定性 · 2026开局', phaseRange:'2026.01 — 2026.04（当前）', phaseClass:'p6' },
+  {
+    date:'2026.01.20', side:'right', type:'tariff',
+    title:'🗓️ 就职一周年，北约关税新威胁',
+    quote:'威胁对8个未达国防开支目标的北约盟友征关税。',
+    us:[
+      {label:'S&P 500', chg:'-1.5%', dir:'dn'},
+      {label:'道琼斯', chg:'跳水', dir:'dn'},
+    ],
+    cn:[
+      {label:'上证指数 1月', chg:'+3.76%（月线两连阳）', dir:'up'},
+      {label:'深证成指 1月', chg:'+5.03%', dir:'up'},
+      {label:'创业板 1月', chg:'+4.47%', dir:'up'},
+    ],
+    note:'🔄 A股与美股出现分歧！北约关税主要针对欧洲，A股1月借内需政策强势上涨，与美股背道而驰。'
+  },
+  {
+    date:'2026.03.24', side:'left', type:'policy',
+    title:'📈 A股创阶段新高 3850，美股震荡',
+    quote:'国内AI+消费政策双驱动，A股上演独立行情。',
+    us:[
+      {label:'S&P 500', chg:'2026年初承压震荡', dir:'neu'},
+      {label:'美股', chg:'关税不确定持续', dir:'neu'},
+    ],
+    cn:[
+      {label:'上证指数', chg:'3850 阶段高点', dir:'up'},
+      {label:'科技/AI板块', chg:'持续领涨', dir:'up'},
+      {label:'超跌反弹格局', chg:'技术面走强', dir:'up'},
+    ],
+    note:'2026年初A股跑赢美股！国内政策刺激+AI产业爆发，上证一度触及3850，独立走出强势行情。'
+  },
+  {
+    date:'2026.04.07-08', side:'right', type:'tariff',
+    title:'📉 关税再升级，美股A股双双承压（当前）',
+    quote:'「We will not back down. Tariffs are here to stay.」历史重演，市场等待「暂停」信号。',
+    us:[
+      {label:'S&P 500 近期', chg:'从高点-10%+', dir:'dn'},
+      {label:'道琼斯', chg:'-500点+', dir:'dn'},
+    ],
+    cn:[
+      {label:'上证指数', chg:'3700附近震荡', dir:'dn'},
+      {label:'A股', chg:'跌幅相对可控', dir:'neu'},
+      {label:'政策底预期', chg:'支撑市场', dir:'up'},
+    ],
+    note:'🔮 历史规律：每次关税升级后约5-10天会有「暂停/豁免」信号。A股政策底韧性持续，等待转机。'
   },
 ];
 
-// ─── RENDER ───
+// ── RENDER ──
 const container = document.getElementById('timeline');
-events.forEach((ev) => {
+events.forEach(ev => {
   if (ev.phase) {
-    const div = document.createElement('div');
-    div.className = `phase-divider ${ev.phaseClass}`;
-    div.innerHTML = `
-      <div class="ph-num">Phase ${ev.phase}</div>
-      <div>
-        <div class="ph-title">${ev.phaseLabel}</div>
-        <div class="ph-range">${ev.phaseRange}</div>
-      </div>`;
-    container.appendChild(div);
-    return;
+    const d = document.createElement('div');
+    d.className = `phase-divider ${ev.phaseClass}`;
+    d.innerHTML = `<div class="ph-num">Phase ${ev.phase}</div>
+      <div><div class="ph-title">${ev.phaseLabel}</div>
+      <div class="ph-range">${ev.phaseRange}</div></div>`;
+    container.appendChild(d); return;
   }
 
-  const mktHtml = ev.market.map(m =>
-    `<span class="mkt-chip ${m.dir}">${m.dir==='up'?'▲':m.dir==='dn'?'▼':'—'} ${m.label} ${m.chg}</span>`
+  const usHtml = ev.us.map(m =>
+    `<span class="mkt-chip us-${m.dir}">${m.dir==='up'?'▲':m.dir==='dn'?'▼':'—'} ${m.label} ${m.chg}</span>`
+  ).join('');
+  const cnHtml = ev.cn.map(m =>
+    `<span class="mkt-chip cn-${m.dir}">${m.dir==='up'?'▲':m.dir==='dn'?'▼':'—'} ${m.label} ${m.chg}</span>`
   ).join('');
 
   const cardHtml = `
@@ -750,27 +791,27 @@ events.forEach((ev) => {
       <div class="tl-date">${ev.date}</div>
       <span class="tl-tag ${ev.type}">${TAGS[ev.type]}</span>
       <div class="tl-title">${ev.title}</div>
-      <div class="tl-quote">${ev.quote.replace(/\n/g,'<br/>')}</div>
-      <div class="tl-market">${mktHtml}</div>
-      ${ev.note ? `<div style="font-size:12px;color:#64748b;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06)">💡 ${ev.note}</div>` : ''}
+      <div class="tl-quote">${ev.quote}</div>
+      <div class="mkt-section">
+        <div class="mkt-row"><span class="market-label">🇺🇸</span>${usHtml}</div>
+        <div class="mkt-row" style="margin-top:4px"><span class="market-label">🇨🇳</span>${cnHtml}</div>
+      </div>
+      ${ev.note?`<div class="mkt-note">💡 ${ev.note}</div>`:''}
     </div>`;
   const nodeHtml = `<div class="tl-node"><div class="node-dot ${ev.type}"></div></div>`;
   const emptyHtml = `<div class="tl-empty"></div>`;
 
   const item = document.createElement('div');
   item.className = `tl-item ${ev.side}`;
-  if (ev.side === 'left') {
-    item.innerHTML = cardHtml + nodeHtml + emptyHtml;
-  } else {
-    item.innerHTML = emptyHtml + nodeHtml + cardHtml;
-  }
+  item.innerHTML = ev.side==='left'
+    ? cardHtml + nodeHtml + emptyHtml
+    : emptyHtml + nodeHtml + cardHtml;
   container.appendChild(item);
 });
 
-// ─── CHART TOOLTIP ───
+// ── CHART TOOLTIP ──
 const tooltip = document.getElementById('tooltip');
 document.querySelectorAll('.chart-event').forEach(dot => {
-  dot.style.cursor = 'pointer';
   dot.addEventListener('mouseenter', () => { tooltip.textContent = dot.dataset.tip; tooltip.style.opacity='1'; });
   dot.addEventListener('mousemove', e => {
     tooltip.style.left = (e.clientX+14)+'px';
