@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>特朗普 × 美股 × A股 时间线 2024.11 — 2026.04</title>
+  <title>特朗普 × 美股 × A股 时间线 2024.11 — 2026.04 + 未来2周预测</title>
   <style>
     :root {
       --bg:#0b0e17; --bg2:#111420; --bg3:#181c2a;
@@ -69,6 +69,14 @@
     .phase.p1{background:rgba(245,158,11,0.15);}  .phase.p2{background:rgba(239,68,68,0.15);}
     .phase.p3{background:rgba(34,197,94,0.12);}   .phase.p4{background:rgba(239,68,68,0.12);}
     .phase.p5{background:rgba(34,197,94,0.15);}   .phase.p6{background:rgba(239,68,68,0.13);}
+    .phase.p7{background:rgba(168,85,247,0.18);color:rgba(216,180,254,0.8);}
+
+    /* prediction card glow */
+    .tl-content.pred-card{border-color:rgba(168,85,247,0.3);box-shadow:0 0 20px rgba(168,85,247,0.08);}
+    .tl-date.pred{color:#a855f7;font-size:13px;}
+    .pred-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(168,85,247,.15);
+      border:1px solid rgba(168,85,247,.35);color:#c4b5fd;padding:2px 10px;border-radius:999px;
+      font-size:10px;font-weight:700;margin-bottom:6px;}
 
     /* ── TIMELINE ── */
     .timeline-section{padding:0 60px 80px;max-width:1400px;margin:0 auto;}
@@ -180,12 +188,13 @@
 <body>
 
 <header>
-  <div class="header-badge">🇺🇸🇨🇳 TRUMP × US MARKETS × A-SHARES · 完整追踪</div>
+  <div class="header-badge">🇺🇸🇨🇳 TRUMP × US MARKETS × A-SHARES · 完整追踪 + 🔮未来2周预测</div>
   <h1>特朗普 <span>×</span> 美股 <span>×</span> A股</h1>
   <h1 style="font-size:clamp(1rem,2vw,1.4rem);font-weight:400;color:var(--muted);margin-top:6px;">
-    2024年11月 — 2026年4月 · 美股与A股同屏对比 · 25个关键节点
+    2024年11月 — 2026年4月 · 美股与A股同屏对比 · 含Phase 7未来2周预测
   </h1>
   <p style="margin-top:12px;">特朗普每次发言，美股怎么反应？A股又如何走？同屏对比，一目了然</p>
+  <p style="margin-top:8px;font-size:13px;color:#a855f7;">🔮 <strong>新增 Phase 7：4.10~4.21 三情景预测</strong>（牛市30% / 基准50% / 熊市20%）· 4.21 霍尔木兹停火到期为关键节点</p>
 </header>
 
 <div class="legend">
@@ -764,6 +773,112 @@ const events = [
       {label:'政策底预期', chg:'支撑市场', dir:'up'},
     ],
     note:'🔮 历史规律：每次关税升级后约5-10天会有「暂停/豁免」信号。A股政策底韧性持续，等待转机。'
+  },
+  {
+    date:'2026.04.08', side:'left', type:'truce',
+    title:'🕊️ 美伊宣布两周临时停火，霍尔木兹重开',
+    quote:'「Iran has agreed to a temporary ceasefire. The Strait of Hormuz will be open for navigation.」— 特朗普 4.8',
+    us:[
+      {label:'S&P 500', chg:'单日 +2.51%', dir:'up'},
+      {label:'道琼斯', chg:'+1323点 +2.85%', dir:'up'},
+      {label:'WTI原油', chg:'暴跌18% → $93', dir:'dn'},
+      {label:'VIX恐慌指数', chg:'21.04 ▼18%', dir:'up'},
+    ],
+    cn:[
+      {label:'上证指数', chg:'+2.70% 收3995', dir:'up'},
+      {label:'深证成指', chg:'+4.79%', dir:'up'},
+      {label:'A股成交', chg:'2.43万亿（放量）', dir:'up'},
+      {label:'航空/炼化', chg:'受益油价暴跌领涨', dir:'up'},
+    ],
+    note:'停火当日美股A股双双大涨，为2026年以来最强单日反弹。油价暴跌18%，是本轮最重要的地缘转折点。'
+  },
+  {
+    date:'2026.04.09', side:'right', type:'policy',
+    title:'📊 停火次日：高开低走，市场分歧显现',
+    quote:'伊朗"评估停火协议"措辞模糊，以色列单方行动疑虑未消，市场进入观察期。',
+    us:[
+      {label:'美股预期', chg:'震荡消化，等待CPI', dir:'neu'},
+      {label:'纳斯达克', chg:'科技股高开后回调', dir:'neu'},
+    ],
+    cn:[
+      {label:'上证指数', chg:'收3966 −0.72%', dir:'dn'},
+      {label:'深证成指', chg:'收13996 −0.33%', dir:'dn'},
+      {label:'A股成交', chg:'2.13万亿（较昨日缩量）', dir:'neu'},
+      {label:'港股恒生', chg:'收25756 −0.54%', dir:'dn'},
+    ],
+    note:'停火后获利回吐，市场转入观望。但缩量调整而非放量大跌，属正常技术性回调，不改变反弹趋势。'
+  },
+
+  // ─── PHASE 7 ───
+  { phase:7, phaseLabel:'⑦ 未来2周预测 · 停火协议验证期', phaseRange:'2026.04.10 — 2026.04.21（前瞻）', phaseClass:'p5' },
+  {
+    date:'🔮 4.10~4.11', side:'left', type:'rally',
+    title:'🔑 美国3月CPI数据 — 通胀信号决定降息预期',
+    quote:'若CPI低于预期 → 5月降息预期升温 → 全球风险偏好修复；若超预期 → 滞胀担忧重燃。',
+    us:[
+      {label:'S&P 500 预测', chg:'震荡为主 ±1%', dir:'neu'},
+      {label:'CPI低于预期', chg:'→ +2~3%反弹', dir:'up'},
+      {label:'CPI超预期', chg:'→ −2~3%回调', dir:'dn'},
+    ],
+    cn:[
+      {label:'上证预测', chg:'3920~3980区间', dir:'neu'},
+      {label:'成交额预测', chg:'2.0~2.3万亿', dir:'neu'},
+      {label:'关注方向', chg:'AI/半导体+降准预期', dir:'up'},
+    ],
+    note:'🎯 4.11是本周最重要的宏观数据节点。A股独立性较强，即使美股波动，A股也可凭政策预期维稳。'
+  },
+  {
+    date:'🔮 4.14~4.15', side:'right', type:'policy',
+    title:'🇨🇳 中国Q1 GDP数据 + 美国大行季报',
+    quote:'中国Q1 GDP预期5.0~5.2%；美国JPMorgan、美银、花旗等大型银行财报开启季报季。',
+    us:[
+      {label:'美国大行季报', chg:'关注高油价冲击利润', dir:'neu'},
+      {label:'S&P 500', chg:'若季报超预期 +1~2%', dir:'up'},
+      {label:'能源股', chg:'油价下行压力持续', dir:'dn'},
+    ],
+    cn:[
+      {label:'Q1 GDP', chg:'若≥5.1% 政策宽松预期降温', dir:'neu'},
+      {label:'Q1 GDP', chg:'若＜5.0% → 降准降息加速', dir:'up'},
+      {label:'上证预测', chg:'3900~4050区间', dir:'up'},
+      {label:'A股成交', chg:'2.0~2.5万亿', dir:'up'},
+    ],
+    note:'🔮 GDP低于预期反而可能是A股的催化剂——迫使央行更快降准，重演"利空变利好"逻辑。'
+  },
+  {
+    date:'🔮 4.21', side:'left', type:'truce',
+    title:'⭐ 霍尔木兹停火两周到期 — 本轮最大尾部风险节点',
+    quote:'停火协议4.21到期，谈判结果将决定接下来1~2个月市场方向。三种情景：延长、达协议、破裂。',
+    us:[
+      {label:'🐂 停火延长/协议', chg:'S&P +5~8%，油价跌破$85', dir:'up'},
+      {label:'📊 小范围分歧', chg:'S&P ±2%，油价$88~95', dir:'neu'},
+      {label:'🐻 停火破裂', chg:'S&P −8~12%，油价飙$110+', dir:'dn'},
+    ],
+    cn:[
+      {label:'🐂 牛市场景(30%)', chg:'上证突破4080，降准落地', dir:'up'},
+      {label:'📊 基准场景(50%)', chg:'上证3900~4000横盘', dir:'neu'},
+      {label:'🐻 熊市场景(20%)', chg:'上证重回3800，再测低', dir:'dn'},
+      {label:'A股成交预测', chg:'1.2~3.5万亿（视情景）', dir:'neu'},
+    ],
+    note:'⭐ 4.21是本轮行情的决战节点。建议关注4.17~4.20谈判进展新闻，提前布局或规避。历史上大事件前市场往往提前定价。'
+  },
+
+  // 综合预测总结卡
+  {
+    date:'🔮 综合预测', side:'right', type:'policy',
+    title:'📋 未来2周三情景概率总结',
+    quote:'综合地缘、宏观、技术三维分析，基准情景（50%）为概率最高路径。',
+    us:[
+      {label:'🐂 牛市(30%)', chg:'停火巩固+降息预期 S&P 5900+', dir:'up'},
+      {label:'📊 基准(50%)', chg:'停火脆弱+横盘震荡 S&P 5600~5800', dir:'neu'},
+      {label:'🐻 熊市(20%)', chg:'停火破裂+原油飙升 S&P 5200−', dir:'dn'},
+    ],
+    cn:[
+      {label:'🐂 牛市(30%)', chg:'上证4050~4150，成交2.5~3万亿', dir:'up'},
+      {label:'📊 基准(50%)', chg:'上证3900~4000，成交1.8~2.3万亿', dir:'neu'},
+      {label:'🐻 熊市(20%)', chg:'上证重回3800，成交跌破1.5万亿', dir:'dn'},
+      {label:'关键观察', chg:'4.11 CPI / 4.15 GDP / 4.21停火到期', dir:'neu'},
+    ],
+    note:'⚠️ 本预测为情景分析，不构成投资建议。最大不确定性：霍尔木兹谈判结果（4.21）。建议分批操作，控制仓位，保留应对极端情景的流动性。'
   },
 ];
 
