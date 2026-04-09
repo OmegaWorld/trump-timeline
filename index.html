@@ -250,10 +250,10 @@
       <div class="chart-card-head">
         <span class="flag">🇺🇸</span>
         <span class="label">S&P 500 走势示意</span>
-        <span class="sub">2024.11 — 2026.04</span>
+        <span class="sub">2024.11 — 2026.04.09 + 🔮预测至4.21</span>
       </div>
       <div class="chart-svg-wrap">
-        <svg viewBox="0 0 700 200" style="height:180px;" preserveAspectRatio="none">
+        <svg viewBox="0 0 860 200" style="height:180px;" preserveAspectRatio="none">
           <defs>
             <linearGradient id="usGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#3b82f6" stop-opacity=".2"/>
@@ -261,24 +261,15 @@
             </linearGradient>
           </defs>
           <!-- grid -->
-          <line x1="0" y1="30" x2="700" y2="30" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-          <line x1="0" y1="70" x2="700" y2="70" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-          <line x1="0" y1="110" x2="700" y2="110" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-          <line x1="0" y1="150" x2="700" y2="150" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="30" x2="860" y2="30" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="70" x2="860" y2="70" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="110" x2="860" y2="110" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="150" x2="860" y2="150" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
           <!-- labels -->
           <text x="4" y="28" fill="#334155" font-size="9">6900</text>
           <text x="4" y="68" fill="#334155" font-size="9">6400</text>
           <text x="4" y="108" fill="#334155" font-size="9">5800</text>
           <text x="4" y="148" fill="#334155" font-size="9">5200</text>
-          <!--
-            y = 180 - (price-5000)/2200*170
-            5000→180 5400→149 5600→134 5800→118 6000→103
-            6100→95  6144→92  6400→73  6500→65  6700→49  6932→32  5200→165
-            x: 20(Nov24)→680(Apr26) span=660 18months ~36.7px/month
-            Nov24=20 Dec24=57 Jan25=94 Feb25=130 Mar25=167 Apr25=203
-            May25=240 Jun25=277 Jul25=313 Aug25=350 Sep25=387 Oct25=423
-            Nov25=460 Dec25=496 Jan26=533 Feb26=570 Mar26=606 Apr26=643
-          -->
           <!-- Area -->
           <path d="M20,118 L57,112 L94,103 L130,92 C147,97 157,110 167,118
             L185,134 L203,149 L218,165 L230,155 L240,134
@@ -290,7 +281,7 @@
             L520,40 L533,50 L555,60
             L570,65 L606,63 L625,57 L643,68
             V180 H20 Z" fill="url(#usGrad)"/>
-          <!-- Line -->
+          <!-- Historical Line -->
           <path d="M20,118 L57,112 L94,103 L130,92 C147,97 157,110 167,118
             L185,134 L203,149 L218,165 L230,155 L240,134
             C252,125 265,115 277,105
@@ -301,6 +292,29 @@
             L520,40 L533,50 L555,60
             L570,65 L606,63 L625,57 L643,68"
             fill="none" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round"/>
+          <!-- 预测区背景 -->
+          <rect x="643" y="0" width="217" height="180" fill="rgba(168,85,247,0.05)"/>
+          <!-- 今日竖线 x=643 -->
+          <line x1="643" y1="0" x2="643" y2="175" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="643" y="12" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle">4.9今日</text>
+          <!-- 4.21竖线 x=830 -->
+          <line x1="830" y1="0" x2="830" y2="175" stroke="rgba(168,85,247,0.5)" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="830" y="12" fill="rgba(168,85,247,0.7)" font-size="8" text-anchor="middle">4.21</text>
+          <!-- 置信带 (熊→牛区间) -->
+          <polygon points="643,68 830,95 830,50 643,68" fill="rgba(168,85,247,0.1)"/>
+          <!-- 牛市线 (30%) S&P→5900~6000 y≈70 -->
+          <path d="M643,68 L720,62 L830,50" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="8,4"/>
+          <!-- 基准线 (50%) S&P→5600~5800 y≈85 -->
+          <path d="M643,68 L720,75 L830,80" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="8,4"/>
+          <!-- 熊市线 (20%) S&P→5200~ y≈120 -->
+          <path d="M643,68 L720,100 L830,120" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="8,4"/>
+          <!-- 预测线标签 -->
+          <text x="834" y="53" fill="#22c55e" font-size="8">🐂 5900+</text>
+          <text x="834" y="83" fill="#a855f7" font-size="8">📊 5700</text>
+          <text x="834" y="123" fill="#ef4444" font-size="8">🐻 5200-</text>
+          <!-- 关键事件标注 -->
+          <text x="680" y="30" fill="rgba(245,158,11,0.7)" font-size="8" text-anchor="middle">4.11 CPI</text>
+          <text x="760" y="30" fill="rgba(59,130,246,0.7)" font-size="8" text-anchor="middle">4.15 GDP</text>
           <!-- Key events -->
           <circle cx="20"  cy="118" r="5" fill="#f59e0b" class="chart-event" data-tip="11.05 大选胜利 S&P+2.5%"/>
           <circle cx="130" cy="92"  r="6" fill="#22c55e" class="chart-event" data-tip="02.19 S&P历史新高 6144"/>
@@ -311,6 +325,7 @@
           <circle cx="460" cy="44"  r="5" fill="#22c55e" class="chart-event" data-tip="11.04 当选一周年 新高"/>
           <circle cx="496" cy="32"  r="7" fill="#22c55e" class="chart-event" data-tip="12.24 S&P历史新高 6932"/>
           <circle cx="533" cy="50"  r="5" fill="#ef4444" class="chart-event" data-tip="01.20 北约关税威胁 跳水"/>
+          <circle cx="643" cy="68"  r="6" fill="#22c55e" class="chart-event" data-tip="04.08 美伊停火 S&P+2.51% 油价-18%"/>
           <!-- x labels -->
           <text x="20"  y="195" fill="#475569" font-size="9" text-anchor="middle">24.11</text>
           <text x="130" y="195" fill="#475569" font-size="9" text-anchor="middle">25.02</text>
@@ -319,7 +334,8 @@
           <text x="387" y="195" fill="#475569" font-size="9" text-anchor="middle">09</text>
           <text x="496" y="195" fill="#475569" font-size="9" text-anchor="middle">12</text>
           <text x="533" y="195" fill="#475569" font-size="9" text-anchor="middle">26.01</text>
-          <text x="643" y="195" fill="#475569" font-size="9" text-anchor="middle">04</text>
+          <text x="643" y="195" fill="#475569" font-size="9" text-anchor="middle">04.09</text>
+          <text x="830" y="195" fill="rgba(168,85,247,0.7)" font-size="9" text-anchor="middle">04.21</text>
         </svg>
       </div>
     </div>
@@ -329,10 +345,10 @@
       <div class="chart-card-head">
         <span class="flag">🇨🇳</span>
         <span class="label">上证指数 走势示意</span>
-        <span class="sub">2024.11 — 2026.04</span>
+        <span class="sub">2024.11 — 2026.04.09 + 🔮预测至4.21</span>
       </div>
       <div class="chart-svg-wrap">
-        <svg viewBox="0 0 700 200" style="height:180px;" preserveAspectRatio="none">
+        <svg viewBox="0 0 860 200" style="height:180px;" preserveAspectRatio="none">
           <defs>
             <linearGradient id="cnGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#e02020" stop-opacity=".2"/>
@@ -340,70 +356,68 @@
             </linearGradient>
           </defs>
           <!-- grid -->
-          <line x1="0" y1="30" x2="700" y2="30" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-          <line x1="0" y1="70" x2="700" y2="70" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-          <line x1="0" y1="110" x2="700" y2="110" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-          <line x1="0" y1="150" x2="700" y2="150" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="30" x2="860" y2="30" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="70" x2="860" y2="70" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="110" x2="860" y2="110" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <line x1="0" y1="150" x2="860" y2="150" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
           <!-- labels -->
-          <text x="4" y="28" fill="#334155" font-size="9">3800</text>
-          <text x="4" y="68" fill="#334155" font-size="9">3500</text>
-          <text x="4" y="108" fill="#334155" font-size="9">3200</text>
-          <text x="4" y="148" fill="#334155" font-size="9">2900</text>
-          <!--
-            y = 180 - (price-2700)/1300*165
-            2700→180  2900→155  3000→143  3100→130  3200→118
-            3300→105  3400→92   3500→80   3600→67   3700→54   3800→41   3900→28
-            x same scale as US chart
-            Nov24(9月牛市后高点3674)=54 -> 大选后回落约3400=92
-            特朗普当选11.06 A股3370附近=97
-            Jan25 中央经济政策加持 3230=113
-            Feb25 高峰 3350=100
-            Mar25 开始承压 3280=109
-            Apr02 解放日 3350→大跌 3180=127
-            Apr07 黑色星期一 2978=155? 太低 改用3100=130
-            Apr09 暂停 3250=112
-            May13 停战 3370+8%=3640 实际3369.24 +0.81% 第二天大涨预期 ~56
-            Jun 3350=100
-            Jul ~3400=92  
-            Aug 3300=105
-            Sep 3500=80
-            Oct 3200=118  (下跌)
-            Nov 3500=80  (反弹)
-            Dec 3350=100
-            Jan26 3560=76 (3.76%)
-            Feb26 3450=88
-            Mar26 3850=36 (3800以上)
-            Apr26 3700=54
-          -->
-          <!-- Area -->
+          <text x="4" y="28" fill="#334155" font-size="9">4100</text>
+          <text x="4" y="68" fill="#334155" font-size="9">3800</text>
+          <text x="4" y="108" fill="#334155" font-size="9">3500</text>
+          <text x="4" y="148" fill="#334155" font-size="9">3200</text>
+          <!-- Area (历史) -->
           <path d="M20,97 L40,92 L57,100 L94,113 L130,100 L167,109
             L185,118 L203,127 L218,130
             L230,112 L240,100
             C255,97 265,96 277,100
             L313,92 L350,105 L387,80
             L423,118 L460,80 L496,100
-            L533,76 L555,88 L570,75 L606,36 L625,52 L643,54
+            L533,76 L555,88 L570,75 L606,36 L625,52 L643,68
             V180 H20 Z" fill="url(#cnGrad)"/>
-          <!-- Line -->
+          <!-- Historical Line (含4.8停火反弹至3995→y≈68, 4.9今日3966→y≈70) -->
           <path d="M20,97 L40,92 L57,100 L94,113 L130,100 L167,109
             L185,118 L203,127 L218,130
             L230,112 L240,100
             C255,97 265,96 277,100
             L313,92 L350,105 L387,80
             L423,118 L460,80 L496,100
-            L533,76 L555,88 L570,75 L606,36 L625,52 L643,54"
+            L533,76 L555,88 L570,75 L606,36 L625,52 L635,55 L643,70"
             fill="none" stroke="#e02020" stroke-width="2" stroke-linejoin="round"/>
+          <!-- 预测区背景 -->
+          <rect x="643" y="0" width="217" height="180" fill="rgba(168,85,247,0.05)"/>
+          <!-- 今日竖线 -->
+          <line x1="643" y1="0" x2="643" y2="175" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="643" y="12" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle">4.9今日</text>
+          <!-- 4.21竖线 -->
+          <line x1="830" y1="0" x2="830" y2="175" stroke="rgba(168,85,247,0.5)" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="830" y="12" fill="rgba(168,85,247,0.7)" font-size="8" text-anchor="middle">4.21</text>
+          <!-- 置信带 -->
+          <polygon points="643,70 830,58 830,100 643,70" fill="rgba(168,85,247,0.1)"/>
+          <!-- 牛市线 (30%) 上证→4080~4150 y≈58 -->
+          <path d="M643,70 L720,64 L830,55" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="8,4"/>
+          <!-- 基准线 (50%) 上证→3900~4000 y≈78 -->
+          <path d="M643,70 L720,74 L830,78" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="8,4"/>
+          <!-- 熊市线 (20%) 上证→3750~3800 y≈100 -->
+          <path d="M643,70 L720,88 L830,100" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="8,4"/>
+          <!-- 预测线标签 -->
+          <text x="834" y="58" fill="#22c55e" font-size="8">🐂 4100</text>
+          <text x="834" y="81" fill="#a855f7" font-size="8">📊 3950</text>
+          <text x="834" y="103" fill="#ef4444" font-size="8">🐻 3800</text>
+          <!-- 关键事件标注 -->
+          <text x="680" y="30" fill="rgba(245,158,11,0.7)" font-size="8" text-anchor="middle">4.11 CPI</text>
+          <text x="760" y="30" fill="rgba(59,130,246,0.7)" font-size="8" text-anchor="middle">4.15 GDP</text>
           <!-- Key events -->
           <circle cx="20"  cy="97"  r="5" fill="#f59e0b" class="chart-event" data-tip="11.06 特朗普当选 上证3370 小幅震荡"/>
           <circle cx="203" cy="127" r="6" fill="#e02020" class="chart-event" data-tip="04.02 解放日 A股次日大跌"/>
           <circle cx="218" cy="130" r="5" fill="#e02020" class="chart-event" data-tip="04.07 黑色星期一 上证-7.5%↓3100"/>
-          <circle cx="230" cy="112" r="7" fill="#a855f7" class="chart-event" data-tip="04.09 暂停 上证反弹+2.5%"/>
+          <circle cx="230" cy="112" r="7" fill="#a855f7" class="chart-event" data-tip="04.09 90天暂停 上证反弹+2.5%"/>
           <circle cx="240" cy="100" r="5" fill="#a855f7" class="chart-event" data-tip="05.13 停战次日 上证大涨+2%+ 创业板+4%+"/>
           <circle cx="387" cy="80"  r="5" fill="#22c55e" class="chart-event" data-tip="09月 降息预期+刺激政策 上证3500↑"/>
           <circle cx="423" cy="118" r="5" fill="#e02020" class="chart-event" data-tip="10月 中美摩擦 上证承压回落"/>
           <circle cx="570" cy="75"  r="5" fill="#22c55e" class="chart-event" data-tip="2026.01 上证1月涨3.76% 两连阳"/>
-          <circle cx="606" cy="36"  r="7" fill="#22c55e" class="chart-event" data-tip="2026.03 上证3850 阶段高点"/>
-          <circle cx="643" cy="54"  r="5" fill="#e02020" class="chart-event" data-tip="2026.04 关税新压力 3700附近承压"/>
+          <circle cx="606" cy="36"  r="7" fill="#22c55e" class="chart-event" data-tip="2026.03 上证3850 阶段高点 霍尔木兹危机前"/>
+          <circle cx="635" cy="52"  r="6" fill="#e02020" class="chart-event" data-tip="2026.04.08 停火反弹！上证+2.70% 收3995"/>
+          <circle cx="643" cy="70"  r="5" fill="#e02020" class="chart-event" data-tip="2026.04.09 今日 上证3966 -0.72% 高开低走"/>
           <!-- x labels -->
           <text x="20"  y="195" fill="#475569" font-size="9" text-anchor="middle">24.11</text>
           <text x="130" y="195" fill="#475569" font-size="9" text-anchor="middle">25.02</text>
@@ -412,7 +426,8 @@
           <text x="387" y="195" fill="#475569" font-size="9" text-anchor="middle">09</text>
           <text x="496" y="195" fill="#475569" font-size="9" text-anchor="middle">12</text>
           <text x="533" y="195" fill="#475569" font-size="9" text-anchor="middle">26.01</text>
-          <text x="643" y="195" fill="#475569" font-size="9" text-anchor="middle">04</text>
+          <text x="643" y="195" fill="#475569" font-size="9" text-anchor="middle">04.09</text>
+          <text x="830" y="195" fill="rgba(168,85,247,0.7)" font-size="9" text-anchor="middle">04.21</text>
         </svg>
       </div>
     </div>
